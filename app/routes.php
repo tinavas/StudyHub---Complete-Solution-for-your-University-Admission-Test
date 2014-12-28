@@ -15,3 +15,31 @@ Route::get('/', function()
 {
 	return View::make('index');
 });
+
+Route::get('about', function()
+{
+	return View::make('general.about');
+});
+
+Route::get('faq', function()
+{
+	return View::make('general.faq');
+});
+
+Route::get('privacy-policy', function()
+{
+	return View::make('general.privacy');
+});
+
+Route::get('terms-and-conditions', function()
+{
+	return View::make('general.terms');
+});
+
+Route::get('contact-us', function()
+{
+	return View::make('general.contact');
+});
+
+
+

@@ -864,11 +864,11 @@
 						<div class="col-md-6">
 							<ul class="footer-menu">
 								<li><a href=" {{ url('/') }} ">Home</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">FAQ</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Terms and Conditions</a></li>
-								<li><a href="#">Contact</a></li>
+								<li><a href="{{ url('/about') }}">About</a></li>
+								<li><a href="{{ url('/faq') }}">FAQ</a></li>
+								<li><a href="{{ url('/privacy-policy') }}">Privacy Policy</a></li>
+								<li><a href="{{ url('/terms-and-conditions') }}">Terms and Conditions</a></li>
+								<li><a href="{{ url('/contact-us') }}">Contact</a></li>
 							</ul>
 						</div>						
 					</div>					
