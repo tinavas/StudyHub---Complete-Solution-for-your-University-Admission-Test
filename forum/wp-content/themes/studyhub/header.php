@@ -102,7 +102,7 @@
 					</div>
 					</div>
 					<div class="logo">
-						<a href="index.html"><img  alt="" src="<?php echo get_template_directory_uri() ?>/images/logo.png"></a>
+						<a href="http://site1/"><img  alt="" src="<?php echo get_template_directory_uri() ?>/images/logo.png"></a>
 					</div>
 				</div>	
 

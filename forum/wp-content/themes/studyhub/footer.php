@@ -99,12 +99,12 @@
 						</div>
 						<div class="col-md-6">
 							<ul class="footer-menu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">FAQ</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="blog-grid-3col.html">Terms and Conditions</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="http://site1/">Home</a></li>
+								<li><a href="http://site1/about">About</a></li>
+								<li><a href="http://site1/faq">FAQ</a></li>
+								<li><a href="http://site1/privacy-policy">Privacy Policy</a></li>
+								<li><a href="http://site1/terms-and-conditions">Terms and Conditions</a></li>
+								<li><a href="http://site1/contact">Contact</a></li>
 							</ul>
 						</div>						
 					</div>					
