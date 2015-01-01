@@ -124,17 +124,24 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
 								<li><a href="http://site1/">Home</a></li>
-							<li class="drop"><a href="#">Study and Practice</a>
+							<li class="drop"><a  class=" <?php $uri = $_SERVER['REQUEST_URI'];
+
+	if( substr($uri,0,8) === '/biology' or substr($uri,0,10) === '/chemistry' or substr($uri,0,8) === '/physics' or substr($uri,0,8) === '/english' or substr($uri,0,10) === '/knowledge' ){
+
+	echo 'active';} ?> " href="#">Study and Practice</a>
 								<ul class="drop-down">
-									<li><a href="#">Biology</a></li>
-									<li><a href="#">Chemistry</a></li>
-									<li><a href="#">Physics</a></li>
-									<li><a href="#">English</a></li>
-									<li><a href="#">Bengali</a></li>
-									<li><a href="#">General Knowledge</a></li>
+									<li><a href="http://site1/biology">Biology</a></li>
+									<li><a href="http://site1/chemistry">Chemistry</a></li>
+									<li><a href="http://site1/physics">Physics</a></li>
+									<li><a href="http://site1/english">English</a></li>
+									<li><a href="http://site1/knowledge">General Knowledge</a></li>
 								</ul>
 							</li>
-							<li><a href="forum/forums">Model Tests</a></li>
+							<li><a class= "<?php $uri = $_SERVER['REQUEST_URI'];
+
+	if( substr($uri,0,12) === '/model-tests' ){
+
+	echo 'active';} ?>" href="http://site1/model-tests">Model Tests</a></li>
 							<li><a class=" <?php if(substr($_SERVER['REQUEST_URI'],0,14)==='/forum/forums/'){ echo 'active'; } ?> " href="<?php echo site_url(); ?>/forums">Discussion Forums</a></li>
 							</ul>
 						</div>
