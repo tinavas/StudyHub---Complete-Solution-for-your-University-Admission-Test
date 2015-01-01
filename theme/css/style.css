@@ -1581,8 +1581,9 @@ button.mfp-arrow {
 /* =  about pages
 /*-------------------------------------------------*/
 .page-banner-section2 {
-  padding: 50px 0;
+  padding: 35px 0;
   background: #2ecc71;
+  border-bottom: 1px solid #fff;
 }
 .page-banner-section2 h1 {
   color: #434343;
@@ -1635,7 +1636,7 @@ button.mfp-arrow {
   display: none;
 }
 .about-section {
-  padding: 90px 0;
+  padding: 30px 0;
 }
 .about-section .image-place img {
   max-width: 100%;
@@ -4217,7 +4218,7 @@ a.next-link:hover {
 }
 .banner-text1-section {
   text-align: center;
-  padding: 50px 0;
+  padding: 35px 0;
   background: #2ecc71;
 }
 .banner-text1-section h1 {
@@ -4242,17 +4243,15 @@ a.next-link:hover {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   line-height: 24px;
-  margin: 0 0 15px;
+  margin: 8px 35px;
   color: #ffffff;
   text-transform: uppercase;
-  margin: 8px 0;
   background: #2ecc71;
   border: 2px solid #ffffff;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -o-border-radius: 2px;
   border-radius: 2px;
-  margin-left: 65px;
 }
 .banner-text1-section h1 a:hover {
   background: #ffffff;
@@ -6644,7 +6643,7 @@ footer .up-footer .flickr-widget ul li a:hover {
 
 .button-two:hover{
   background-color: #2ecc71 !important; 
-  border:1px solid #fff !important;
+  border: 2px solid #000000 !important;
   font-weight: bold;
 }
 

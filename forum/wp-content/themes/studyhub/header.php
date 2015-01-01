@@ -124,76 +124,17 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
 								<li><a href="http://site1/">Home</a></li>
-							<li class="megadrop"><a href="index.html">Study and Practice</a>
-								<div class="megadrop-down">
-									<div class="container">
-										<div class="dropdown">
-											<div class="row">
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>Medical Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>Engineering Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>DU Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul class="last-child">
-														<li>NU Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="drop"><a href="#">Model Test</a>
+							<li class="drop"><a href="#">Study and Practice</a>
 								<ul class="drop-down">
-									<li><a href="#">Medical Admission Test</a></li>
-									<li><a href="#">Engineering Admission Test</a></li>
-									<li><a href="#">DU Admission Test</a></li>
-									<li><a href="#">Others</a></li>
+									<li><a href="#">Biology</a></li>
+									<li><a href="#">Chemistry</a></li>
+									<li><a href="#">Physics</a></li>
+									<li><a href="#">English</a></li>
+									<li><a href="#">Bengali</a></li>
+									<li><a href="#">General Knowledge</a></li>
 								</ul>
 							</li>
+							<li><a href="forum/forums">Model Tests</a></li>
 							<li><a class=" <?php if(substr($_SERVER['REQUEST_URI'],0,14)==='/forum/forums/'){ echo 'active'; } ?> " href="<?php echo site_url(); ?>/forums">Discussion Forums</a></li>
 							</ul>
 						</div>

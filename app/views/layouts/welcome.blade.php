@@ -27,12 +27,14 @@
 	{{ HTML::style('theme/css/owl.theme.css') }}
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	{{ HTML::style('theme/css/animate.css') }}
-
+	{{ HTML::style('theme/css/main-slider.css') }}
+	
 	<!-- REVOLUTION BANNER CSS SETTINGS -->
 	{{ HTML::style('theme/css/settings.css') }}
 	{{ HTML::style('theme/css/style.css') }}
 
 	<script type="text/javascript" src="{{ url('/theme/js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url('/theme/js/modernizr.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/theme/js/jquery.migrate.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/theme/js/jquery.magnific-popup.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/theme/js/owl.carousel.min.js') }}"></script>
@@ -45,6 +47,9 @@
 	<script type="text/javascript" src="{{ url('/theme/js/plugins-scroll.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/theme/js/waypoint.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/theme/js/jquery.flexslider.js') }}"></script>
+	
+	<script type="text/javascript" src="{{ url('/theme/js/bookblock.js') }}"></script>
+	<script type="text/javascript" src="{{ url('/theme/js/custom.js') }}"></script>
 
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
     <script type="text/javascript" src="{{ url('/theme/js/jquery.themepunch.tools.min.js') }}"></script>
@@ -117,76 +122,19 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
 								<li><a href="{{ url('/') }}">Home</a></li>
-							<li class="megadrop"><a href="index.html">Study and Practice</a>
-								<div class="megadrop-down">
-									<div class="container">
-										<div class="dropdown">
-											<div class="row">
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>Medical Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>Engineering Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>DU Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul class="last-child">
-														<li>NU Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="drop"><a href="#">Model Test</a>
+							<li class="drop"><a href="#">Study and Practice</a>
 								<ul class="drop-down">
-									<li><a href="#">Medical Admission Test</a></li>
-									<li><a href="#">Engineering Admission Test</a></li>
-									<li><a href="#">DU Admission Test</a></li>
-									<li><a href="#">Others</a></li>
+									<li><a href="{{ url('/biology') }}">Biology</a></li>
+									<li><a href="{{ url('/chemistry') }}">Chemistry</a></li>
+									<li><a href="{{ url('/physics') }}">Physics</a></li>
+									<li><a href="{{ url('/english') }}">English</a></li>
+									<li><a href="{{ url('/knowledge') }}">General Knowledge</a></li>
 								</ul>
 							</li>
+							<li><a class= "<?php $uri = $_SERVER['REQUEST_URI'];
+
+	if( substr($uri,0,12) === '/model-tests' ){echo 'active';} ?> "
+	href="{{ url('/model-tests') }}">Model Tests</a></li>
 							<li><a href="forum/forums">Discussion Forums</a></li>
 							</ul>
 						</div>
@@ -196,337 +144,84 @@
 		<!-- End Header -->
 
 
-<!-- slider 
-			================================================== -->
-		<div id="slider" class="slider1">
-			<!--
-			#################################
-				- THEMEPUNCH BANNER -
-			#################################
-			-->
-			<div class="tp-banner-container">
-				<div class="tp-banner" >
-					<ul>
-						<!-- SLIDE  -->
-						<li data-transition="fade" data-slotamount="7" data-masterspeed="500" >
-							<!-- MAIN IMAGE -->
-									<img src="{{ url('/theme/upload/slide/3.jpg') }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-							<!-- LAYERS -->
+<div class="row">
+      <section class="col-md-12 slider">
+        <section class="main-slider">
+          <div class="bb-custom-wrapper">
+            <div id="bb-bookblock" class="bb-bookblock">
 
-							<!-- LAYER NR. 1 -->
-							<div class="tp-caption lft large_bold_white customout"
-								data-x="25"
-								data-y="100"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="1200"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 4">Preparation for admission test <br /> from home
-							</div>
-							
-							<!-- LAYER NR. 2 -->
-							<div class="tp-caption lfl medium_thin_grey"
-								data-x="25"
-								data-y="232"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="1600"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14">Save your travelling time to coaching center and invest it to <br /> your personal study at home.
-							</div>
-							
-							<!-- LAYER NR. 3 -->
-							<div class="tp-caption lfb medium_thin_grey"
-								data-x="25"
-								data-y="310"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="2000"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14"><a href="#" class="button-two">Have a Look</a>
-							</div>
+              <div class="bb-item">
+                <div class="bb-custom-content">
+                  <div class="slide-inner">
+                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a>
+                    </div>
+                    <div class="col-md-8 book-detail">
+                      <h2>Preparation for admission test from home</h2>
+                      <div class="cap-holder">
+                        <p> Save your travelling time to coaching center and invest it to 
+                        	your personal study at home. </p>
+                        <a href="book-detail.html" class="button-two">Read More</a> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-							<!-- LAYER NR. 4 -->
-							<div class="tp-caption lft customout"
-								data-x="772"
-								data-y="102"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="2500"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev8.png') }}" alt="">
-							</div>
+              <div class="bb-item">
+                <div class="bb-custom-content">
+                	<div class="slide-inner">
+                    <div class="col-md-8 book-detail">
+                      <h2>All resources are in one place</h2>
+                      <div class="cap-holder">
+                        <p>	Our content is very resourceful and well documented. 
+                        	We make sure you will not miss anything for your 100% preparation. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a></div>
+                  </div>
+                </div>
+              </div>
 
-							<!-- LAYER NR. 5 -->
-							<div class="tp-caption lft customout"
-								data-x="1016"
-								data-y="218"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="3100"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev9.png') }}" alt="">
-							</div>
-						</li>
-						<!-- SLIDE  -->
-						<li data-transition="fade" data-slotamount="7" data-masterspeed="500" >
-							<!-- MAIN IMAGE -->
-							<img src="{{ url('/theme/upload/slide/5.jpg') }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-							<!-- LAYERS -->
+              <div class="bb-item">
+                <div class="bb-custom-content">
+                	<div class="slide-inner">
+                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a> 
+                    </div>
+                    <div class="col-md-8 book-detail">
+                      <h2>Never Under Estimate the Power of Community</h2>
+                      <div class="cap-holder">
+                        <p>	Our forum is always ready to answer your question 
+                        	Experts are out there to answer your questions relating your admission. </p>
+                        <a href="book-detail.html" class="button-two">Visit the forum</a> </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-							<!-- LAYER NR. 1 -->
-							<div class="tp-caption lft large_bold_white customout"
-								data-x="25"
-								data-y="120"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="1200"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 4">All resources are in <br />one place
-							</div>
-							
-							<!-- LAYER NR. 2 -->
-							<div class="tp-caption lfl medium_thin_grey"
-								data-x="25"
-								data-y="250"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="1600"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14">Our content is very resourceful and well documented. <br /> We make sure you will not miss anything for your 100% preparation.
-							</div>
+              <div class="bb-item">
+                <div class="bb-custom-content">
+                	<div class="slide-inner">
 
-							<!-- LAYER NR. 3 -->
-							<div class="tp-caption lft customout"
-								data-x="500"
-								data-y="47"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="2500"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev12.png') }}" alt="">
-							</div>
+                    <div class="col-md-8 book-detail">
+                      <h2>Don't forget to press our facebook like button</h2>
+                      <div class="cap-holder">
+                        <p> Get updated information and special tips and tricks about your admission prepation 
+                        	to your facebook news feed by liking us. </p>
+                        <a href="#facebook-like" class="button-two">Like Us on <span class="btnfb"><i class="fa fa-facebook"></i></span>
+                    </div>
+                  </div>
+                  <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a> 
+                    </div>
 
-							<!-- LAYER NR. 4 -->
-							<div class="tp-caption lfb customout"
-								data-x="600"
-								data-y="57"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="3100"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev13.png') }}" alt="">
-							</div>
+                </div>
+              </div>
+            </div>
 
-							<!-- LAYER NR. 4 -->
-							<div class="tp-caption lfr customout"
-								data-x="705"
-								data-y="63"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="3500"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev14.png') }}" alt="">
-							</div>
-						</li>
-						<!-- SLIDE  -->
-						<li data-transition="fade" data-slotamount="7" data-masterspeed="500" >
-							<!-- MAIN IMAGE -->
-							<img src="{{ url('/theme/upload/slide/4.jpg') }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-							<!-- LAYERS -->
+        </div>
+          </div>
+        </section>
 
-							<!-- LAYER NR. 1 -->
-							<div class="tp-caption lft large_bold_white customout"
-								data-x="25"
-								data-y="100"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="1200"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 4">Our forum is always ready to <br />answer your question
-							</div>
-							
-							<!-- LAYER NR. 2 -->
-							<div class="tp-caption lfl medium_thin_grey"
-								data-x="25"
-								data-y="232"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="1600"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14">Experts are out there to answer your questions relating your admission.
-							</div>
-
-							<!-- LAYER NR. 3 -->
-							<div class="tp-caption lfb medium_thin_grey"
-								data-x="25"
-								data-y="280"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="2000"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14"><a href="#" class="button-two">Visit the forum</a>
-							</div>
-
-							<!-- LAYER NR. 4 -->
-							<div class="tp-caption lft customout"
-								data-x="655"
-								data-y="86"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="2500"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev10.png') }}" alt="">
-							</div>
-
-							<!-- LAYER NR. 5 -->
-							<div class="tp-caption lfr customout"
-								data-x="800"
-								data-y="50"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="3100"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev11.png') }}" alt="">
-							</div>
-						</li>
-						<!-- SLIDE  -->
-						<li data-transition="fade" data-slotamount="7" data-masterspeed="500" >
-							<!-- MAIN IMAGE -->
-							<img src="{{ url('/theme/upload/slide/1.jpg') }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-							<!-- LAYERS -->
-
-							<!-- LAYER NR. 1 -->
-							<div class="tp-caption lft customout"
-								data-x="25"
-								data-y="127"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="1200"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev1.png') }}" alt="">
-							</div>
-
-							<!-- LAYER NR. 2 -->
-							<div class="tp-caption lft customout"
-								data-x="20"
-								data-y="84"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="2000"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev2.png') }}" alt="">
-							</div>
-
-							<!-- LAYER NR. 3 -->
-							<div class="tp-caption lft customout"
-								data-x="10"
-								data-y="44"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="2800"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 9"><img src="{{ url('/theme/images/revolution-icons/dev3.png') }}" alt="">
-							</div>
-
-							<!-- LAYER NR. 4 -->
-							<div class="tp-caption lft large_bold_white customout"
-								data-x="565"
-								data-y="95"
-								data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-								data-speed="700"
-								data-start="3200"
-								data-easing="Back.easeOut"
-								data-endspeed="500"
-								data-endeasing="Power4.easeIn"
-								data-captionhidden="on"
-								style="z-index: 4">Don't forget to press our <br /> facebook like button
-							</div>
-							
-							<!-- LAYER NR. 5 -->
-							<div class="tp-caption lfb medium_thin_grey"
-								data-x="565"
-								data-y="226"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="3600"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14">Get updated information and <br /> special tips and tricks about your admission prepation<br /> to your facebook news feed by liking us. 
-							</div>
-
-							<!-- LAYER NR. 6 -->
-							<div class="tp-caption lfb medium_thin_grey"
-								data-x="565"
-								data-y="320"
-								data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
-								data-speed="1000"
-								data-start="2000"
-								data-easing="Back.easeInOut"
-								data-endspeed="400"
-								data-endeasing="Back.easeIn"
-								style="z-index: 14"><a href="#facebook-like" class="button-two">Like Us on <span class="btnfb"><i class="fa fa-facebook"></i></span>
-</a>
-							</div>
-						</li>
-					</ul>
-					<div class="tp-bannertimer"></div>
-				</div>
-			</div>
-		</div>
-		<!-- End slider -->
-
-
+        </section>
+        </div>
 
 		<!-- content 
 			================================================== -->
@@ -698,7 +393,7 @@
 				================================================== -->
 			<div class="section-content banner-text1-section">
 				<div class="container">
-					<h1>Are you ready to sit for model tests? <a href="#"></i>
+					<h1>Are you ready to sit for model tests? <a href="#">
  Buy Points for Model Test Now and get started</a></h1>					
 				</div>
 			</div>
@@ -910,7 +605,6 @@
 });
 
 	</script>
-
 
 </body>
 

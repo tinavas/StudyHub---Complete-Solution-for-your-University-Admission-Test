@@ -9,10 +9,7 @@
  * @since Twenty Fourteen 1.0
  */
 ?>
-
-
-		<!-- footer 
-			================================================== -->
+		<!-- footer ================================================== -->
 		<footer>
 			<div class="up-footer">
 				<div class="container">

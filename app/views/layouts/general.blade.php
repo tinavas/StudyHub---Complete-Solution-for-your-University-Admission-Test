@@ -97,8 +97,6 @@
 					</div>
 				</div>	
 
-				
-
 				<div class="container">
 
 					
@@ -115,76 +113,24 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
 								<li><a href="{{ url('/') }}">Home</a></li>
-							<li class="megadrop"><a href="index.html">Study and Practice</a>
-								<div class="megadrop-down">
-									<div class="container">
-										<div class="dropdown">
-											<div class="row">
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>Medical Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>Engineering Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul>
-														<li>DU Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-												<div class="col-md-3 col-sm-6">
-													<ul class="last-child">
-														<li>NU Admission Test</li>
-														<li><a href="#">General Issues</a></li>
-														<li><a href="#">Biology</a></li>
-														<li><a href="#">Physics</a></li>
-														<li><a href="#">Chemistry</a></li>
-														<li><a href="#">Mathematics</a></li>
-														<li><a href="#">General Knowledge</a></li>
-														<li><a href="#">Bengli</a></li>
-														<li><a href="#">English</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="drop"><a href="#">Model Test</a>
+							<li class="drop"><a  class=" <?php $uri = $_SERVER['REQUEST_URI'];
+
+	if( substr($uri,0,8) === '/biology' or substr($uri,0,10) === '/chemistry' or substr($uri,0,8) === '/physics' or substr($uri,0,8) === '/english' or substr($uri,0,10) === '/knowledge' ){
+
+	echo 'active';} ?> " href="#">Study and Practice</a>
 								<ul class="drop-down">
-									<li><a href="#">Medical Admission Test</a></li>
-									<li><a href="#">Engineering Admission Test</a></li>
-									<li><a href="#">DU Admission Test</a></li>
-									<li><a href="#">Others</a></li>
+									<li><a href="{{ url('/biology') }}">Biology</a></li>
+									<li><a href="{{ url('/chemistry') }}">Chemistry</a></li>
+									<li><a href="{{ url('/physics') }}">Physics</a></li>
+									<li><a href="{{ url('/english') }}">English</a></li>
+									<li><a href="{{ url('/knowledge') }}">General Knowledge</a></li>
 								</ul>
 							</li>
+							<li><a class= "<?php $uri = $_SERVER['REQUEST_URI'];
+
+	if( substr($uri,0,12) === '/model-tests' ){
+
+	echo 'active';} ?>" href="{{ url('/model-tests') }}">Model Tests</a></li>
 							<li><a href="forum/forums">Discussion Forums</a></li>
 							</ul>
 						</div>
@@ -324,14 +270,6 @@
 				});
 
 		});
-
-		$(document).ready(function() {
-    $("[href]").each(function() {
-    if (this.href == window.location.href) {
-        $(this).addClass("active");
-        }
-    });
-});
 
 	</script>
 

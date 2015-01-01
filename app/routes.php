@@ -41,5 +41,42 @@ Route::get('contact-us', function()
 	return View::make('general.contact');
 });
 
+Route::get('biology', function()
+{
+	return View::make('biology.subject');
+});
+
+Route::get('chemistry', function()
+{
+	return View::make('chemistry.subject');
+});
+
+Route::get('physics', function()
+{
+	return View::make('physics.subject');
+});
+
+Route::get('english', function()
+{
+	return View::make('english.subject');
+});
+
+Route::get('knowledge', function()
+{
+	return View::make('knowledge.subject');
+});
+
+Route::get('model-tests', function()
+{
+	return View::make('modeltest.main');
+});
+
+Route::get('model-tests/your-tests', function()
+{
+	return View::make('modeltest.yourtests');
+});
+
+
+
 
 
