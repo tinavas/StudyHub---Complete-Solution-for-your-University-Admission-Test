@@ -1,0 +1,50 @@
+{
+    "name": "hampel/wordpress-auth-laravel",
+    "description": "WordPress Auth Driver for Laravel",
+	"homepage" : "https://bitbucket.org/hampel/wordpress-auth-driver-for-laravel",
+	"authors": [{
+		"name": "Simon Hampel",
+		"email": "simon@hampelgroup.com",
+		"homepage": "http://hampelgroup.com/",
+		"role": "Developer"
+	}],
+	"support": {
+		"email": "support@hampelgroup.com",
+		"issues": "https://bitbucket.org/hampel/wordpress-auth-driver-for-laravel/issues",
+		"source": "https://bitbucket.org/hampel/wordpress-auth-driver-for-laravel/src"
+	},
+	"keywords" : [
+		"laravel",
+		"wordpress",
+		"auth",
+		"driver"
+	],
+	"license" : [
+		"MIT"
+	],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "~4.1",
+		"illuminate/auth": ">=4.1.29,~4.1",
+		"illuminate/config": "~4.1",
+		"illuminate/hashing": "~4.1",
+		"hautelook/phpass": "0.3.*",
+		"hampel/user": ">=1.0,<3.0"
+    },
+	"require-dev" : {
+		"mockery/mockery": "dev-master@dev"
+	},
+    "autoload": {
+        "psr-0": {
+            "Hampel\\WordPress": "src/"
+        },
+		"files": [
+			"src/configHelpers.php"
+		]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

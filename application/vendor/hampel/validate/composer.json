@@ -1,0 +1,42 @@
+{
+    "name": "hampel/validate",
+    "description": "Simple validator library composer package",
+	"homepage" : "https://bitbucket.org/hampel/validate",
+	"authors": [{
+		"name": "Simon Hampel",
+		"email": "simon@hampelgroup.com",
+		"homepage": "http://hampelgroup.com/",
+		"role": "Developer"
+	}],
+	"support": {
+		"email": "support@hampelgroup.com",
+		"issues": "https://bitbucket.org/hampel/validate/issues",
+		"source": "https://bitbucket.org/hampel/validate/src"
+	},
+	"keywords": [
+		"validation"
+	],
+	"license" : [
+		"MIT"
+	],
+    "require": {
+        "php": ">=5.3.0"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "~4.0"
+	},
+    "suggest": {
+		"hampel/validate-laravel": "Extends the Laravel validation service with some of the validation functions from this library",
+		"hampel/tlds": "Provides a simple mechanism for retrieving a list of Top Level Domains directly from IANA (or other sources) plus domain and TLD validation for Laravel"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hampel\\Validate\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hampel\\Validate\\": "src/"
+        }
+	}
+}
