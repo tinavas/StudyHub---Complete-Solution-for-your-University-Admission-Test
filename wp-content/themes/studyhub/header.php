@@ -89,7 +89,7 @@
 
 								<?php if ( !is_user_logged_in() ) { ?>
 
-								<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>"><b>FREE REGISTRATION</b></a> </span>
+								<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>">FREE REGISTRATION</a> </span>
 								
 								<?php } ?>
 							</div>
@@ -100,16 +100,16 @@
 
 									<span class="rego">
 										<i class="fa fa-user main-color"></i>
-											<a href="<?php echo get_site_url() . "/wp-login.php?action=logout"; ?>"> 
-											<b>LOGOUT</b> </a>	
+											<a href="<?php echo wp_logout_url( home_url() ); ?>"> 
+											LOGOUT</a>	
 									</span>	
 
 									<?php }else{ ?> 
 									
 										<span class="rego">
 										<i class="fa fa-user main-color"></i>
-											<a href="<?php echo wp_login_url($_SERVER["REQUEST_URI"] ); ?>"> 
-											<b>LOGIN NOW</b> </a>
+											<a href="<?php echo get_site_url() . "/login"; ?>"> 
+											LOGIN NOW</a>
 									</span>
 										
 									<?php } ?>
@@ -119,7 +119,7 @@
 					</div>
 					</div>
 					<div class="logo">
-						<a href="http://localhost/admissiontesthub/application/"><img  alt="" src="<?php echo get_template_directory_uri() ?>/images/logo.png"></a>
+						<a href="<?php echo get_site_url(); ?>"><img  alt="" src="<?php echo get_template_directory_uri() ?>/images/logo.png"></a>
 					</div>
 				</div>	
 

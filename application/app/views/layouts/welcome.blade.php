@@ -84,21 +84,21 @@
 							<div class="col-md-6 col-sm-7">
 
 								<?php if ( !is_user_logged_in() ) { ?>
-									<span class="rego"><i class="fa fa-gift main-color"></i> <a href="http://localhost/admissiontesthub/wp-login.php?action=register"><b>FREE REGISTRATION</b></a> </span>
+									<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() ."/wp-login.php?action=register"; ?>">FREE REGISTRATION</a> </span>
 								<?php } ?>
 							</div>
 							<div class="col-md-6 col-sm-5">
 								<div class="right">
 									<?php if ( !is_user_logged_in() ) { ?>
-									<span class="rego"><i class="fa fa-user main-color"></i><a href="http://localhost/admissiontesthub/wp-login.php"> <b>LOGIN NOW</b> </a>
+									<span class="rego"><i class="fa fa-user main-color"></i><a href="<?php echo get_site_url() . "/login"; ?>">LOGIN NOW</a>
 										</span>
 
 									<?php }else{ ?>
 
 									<span class="rego">
 										<i class="fa fa-user main-color"></i>
-											<a href="http://localhost/admissiontesthub/wp-login.php?action=logout"> 
-											<b>LOGOUT</b> </a>	
+											<a href="<?php echo wp_logout_url( home_url() ); ?>"> 
+											LOGOUT</a>	
 									</span>	
 									<?php } ?>	
 										</div>					

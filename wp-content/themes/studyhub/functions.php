@@ -521,19 +521,51 @@ if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow
 
 /* Redirect after logout */
 
-add_action('wp_logout','go_home');
-function go_home(){ 
-header("Location: http://localhost/admissiontesthub/");
-die();
-
+add_filter('logout_url', 'my_logout_url');
+function my_logout_url( $logout_url, $redirect = null ) {
+	return $logout_url . '&amp;redirect_to=' . urlencode( get_bloginfo('url') );
 }
 
-add_action( 'wp_login', 'go_current' );
 
-function go_current() {
 
-	//header("Location: " .$_SERVER['HTTP_REFERRER']);
-	//die();
+/* Redirect to custom login page */
+function redirect_login_page() {  
+    $login_page  = home_url( '/login/' );  
+    $page_viewed = basename($_SERVER['REQUEST_URI']);  
+  
+    if( $page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {  
+        wp_redirect($login_page);  
+        exit;  
+    }  
+}  
+add_action('init','redirect_login_page');
 
-}
+    function login_failed() {  
+        $login_page  = home_url( '/login/' );  
+        wp_redirect( $login_page . '?login=failed' );  
+        exit;  
+    }  
+    add_action( 'wp_login_failed', 'login_failed' );  
+      
+    function verify_username_password( $user, $username, $password ) {  
+        $login_page  = home_url( '/login/' );  
+        if( $username == "" || $password == "" ) {  
+            wp_redirect( $login_page . "?login=empty" );  
+            exit;  
+        }  
+    }  
+    add_filter( 'authenticate', 'verify_username_password', 1, 3);  
+
+
+/* Redirect to custom password reset page */
+function redirect_reset_page() {  
+    $reset_page  = home_url( '/reset/' );  
+    $page_viewed = basename($_SERVER['REQUEST_URI']);  
+  
+    if( $page_viewed == "wp-login.php?action=lostpassword" && $_SERVER['REQUEST_METHOD'] == 'GET') {  
+        wp_redirect($reset_page);  
+        exit;  
+    }  
+}  
+add_action('init','redirect_reset_page');
 
