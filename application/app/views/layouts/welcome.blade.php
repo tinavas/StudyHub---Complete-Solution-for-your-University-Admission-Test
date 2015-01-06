@@ -128,7 +128,7 @@
 				<div class="bottom-menu">
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
-								<li><a href="{{ url('/') }}">Home</a></li>
+								<li><a class="active" href="{{ url('/') }}">Home</a></li>
 							<li class="drop"><a href="#">Study and Practice</a>
 								<ul class="drop-down">
 									<li><a href="{{ url('/biology') }}">Biology</a></li>
@@ -138,11 +138,8 @@
 									<li><a href="{{ url('/knowledge') }}">General Knowledge</a></li>
 								</ul>
 							</li>
-							<li><a class= "<?php $uri = $_SERVER['REQUEST_URI'];
-
-	if( substr($uri,0,12) === '/model-tests' ){echo 'active';} ?> "
-	href="{{ url('/model-tests') }}">Model Tests</a></li>
-							<li><a href="http://localhost/admissiontesthub/forums">Discussion Forums</a></li>
+							<li><a href="{{ url('/model-tests') }}">Model Tests</a></li>
+							<li><a href="<?php echo get_site_url() . "/forums"; ?>">Discussion Forums</a></li>
 							</ul>
 						</div>
 				</div>

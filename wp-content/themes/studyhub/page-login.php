@@ -44,9 +44,11 @@ get_header(); ?>
 		<div class="login-form"> 
 
 		<?php if ( !is_user_logged_in() ) { ?> 
-		<?php  
+		<?php 
+
+
 		$args = array(  
-		    'redirect' => home_url(),
+		    'redirect' => $_SERVER['HTTP_REFERER'],
 		    'label_username' => __( 'Username: ' ),
         	'label_password' => __( 'Password: ' ),
         	'label_remember' => __( 'Remember Me' ),

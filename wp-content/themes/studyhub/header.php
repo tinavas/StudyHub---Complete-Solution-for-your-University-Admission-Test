@@ -140,26 +140,18 @@
 				<div class="bottom-menu">
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
-								<li><a href="http://localhost/admissiontesthub/application/">Home</a></li>
-							<li class="drop"><a  class=" <?php $uri = $_SERVER['REQUEST_URI'];
-
-	if( substr($uri,0,8) === '/biology' or substr($uri,0,10) === '/chemistry' or substr($uri,0,8) === '/physics' or substr($uri,0,8) === '/english' or substr($uri,0,10) === '/knowledge' ){
-
-	echo 'active';} ?> " href="#">Study and Practice</a>
+								<li><a href="<?php echo site_url(); ?>/application/">Home</a></li>
+							<li class="drop"><a href="#">Study and Practice</a>
 								<ul class="drop-down">
-									<li><a href="http://localhost/admissiontesthub/application/biology">Biology</a></li>
-									<li><a href="http://localhost/admissiontesthub/application/chemistry">Chemistry</a></li>
-									<li><a href="http://localhost/admissiontesthub/application/physics">Physics</a></li>
-									<li><a href="http://localhost/admissiontesthub/application/english">English</a></li>
-									<li><a href="http://localhost/admissiontesthub/application/knowledge">General Knowledge</a></li>
+									<li><a href="<?php echo site_url(); ?>/application/biology">Biology</a></li>
+									<li><a href="<?php echo site_url(); ?>/application/chemistry">Chemistry</a></li>
+									<li><a href="<?php echo site_url(); ?>/application/physics">Physics</a></li>
+									<li><a href="<?php echo site_url(); ?>/application/english">English</a></li>
+									<li><a href="<?php echo site_url(); ?>/application/knowledge">General Knowledge</a></li>
 								</ul>
 							</li>
-							<li><a class= "<?php $uri = $_SERVER['REQUEST_URI'];
-
-	if( substr($uri,0,12) === '/model-tests' ){
-
-	echo 'active';} ?>" href="http://localhost/admissiontesthub/application/model-tests">Model Tests</a></li>
-							<li><a class=" <?php if(substr($_SERVER['REQUEST_URI'],0,14)==='/forum/forums/'){ echo 'active'; } ?> " href="<?php echo site_url(); ?>/forums">Discussion Forums</a></li>
+							<li><a href="<?php echo site_url(); ?>/application/model-tests">Model Tests</a></li>
+							<li><a class="active" href="<?php echo site_url(); ?>/forums">Discussion Forums</a></li>
 							</ul>
 						</div>
 				</div>

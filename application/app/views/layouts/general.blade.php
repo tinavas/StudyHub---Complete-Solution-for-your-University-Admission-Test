@@ -121,11 +121,17 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
 								<li><a href="{{ url('/') }}">Home</a></li>
-							<li class="drop"><a  class=" <?php $uri = $_SERVER['REQUEST_URI'];
+							<li class="drop"><a  
 
-	if( substr($uri,0,8) === '/biology' or substr($uri,0,10) === '/chemistry' or substr($uri,0,8) === '/physics' or substr($uri,0,8) === '/english' or substr($uri,0,10) === '/knowledge' ){
+							class=" <?php $uri = $_SERVER['REQUEST_URI'];
+							if (preg_match("/biology/",$uri) or 
+								preg_match("/chemistry/",$uri) or 
+								preg_match("/physics/",$uri) or
+								preg_match("/english/",$uri) or
+								preg_match("/knowledge/",$uri))
+								{ echo 'active';} ?> " 
 
-	echo 'active';} ?> " href="#">Study and Practice</a>
+								href="#">Study and Practice</a>
 								<ul class="drop-down">
 									<li><a href="{{ url('/biology') }}">Biology</a></li>
 									<li><a href="{{ url('/chemistry') }}">Chemistry</a></li>
@@ -134,12 +140,13 @@
 									<li><a href="{{ url('/knowledge') }}">General Knowledge</a></li>
 								</ul>
 							</li>
-							<li><a class= "<?php $uri = $_SERVER['REQUEST_URI'];
+							<li><a 
 
-	if( substr($uri,0,12) === '/model-tests' ){
+								class=" <?php $uri = $_SERVER['REQUEST_URI'];
+								if (preg_match("/model-tests/",$uri) ){ echo 'active';} ?> "
 
-	echo 'active';} ?>" href="{{ url('/model-tests') }}">Model Tests</a></li>
-							<li><a href="http://localhost/admissiontesthub/forums">Discussion Forums</a></li>
+								href="{{ url('/model-tests') }}">Model Tests</a></li>
+							<li><a href="<?php echo get_site_url() . "/forums"; ?>">Discussion Forums</a></li>
 							</ul>
 						</div>
 				</div>
