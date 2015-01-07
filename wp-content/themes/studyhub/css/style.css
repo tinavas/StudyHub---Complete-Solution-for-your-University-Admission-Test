@@ -1037,7 +1037,7 @@ li.megadrop:hover .megadrop-down {
 /* =  General
 /*-------------------------------------------------*/
 body {
-  background: url('../images/back-pattern.png');
+  background: url('../images/back-pattern.png') !important;
 }
 #container {
   background: #fff;

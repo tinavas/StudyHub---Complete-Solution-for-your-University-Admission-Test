@@ -21,7 +21,10 @@ get_header()
 <div class="section-content services-section">
 				<div class="title-section">
 <div class="container">
+
 <div class="wrapper">
+<?php if ( !is_user_logged_in() ) { ?> 
+
 <?php
 global $wpdb;
 $error = '';
@@ -56,7 +59,8 @@ $headers[] = "X-Mailer: PHP \r\n";
 $headers[] = 'From: '.$sender.' < '.$email.'>' . "\r\n";
 $mail = wp_mail( $to, $subject, $message, $headers );
 if( $mail )
-$success = 'Check your email address for you new password.';
+$success = 'Check your email address for you new password. 
+Do not forget to change the password after logged in.';
 } else {
 $error = 'Oops something went wrong updaing your account.';
 }
@@ -70,9 +74,9 @@ echo '<div class="error_login"><p class="success">'. $success .'</p></div>';
  
 <!--html code-->
 <form method="post">
+
 <fieldset>
-<p>Please enter the email address which you used during registration. 
-	You will receive a new password via email. Do not forget to change that password.</p>
+	<p>Please enter the email address which you used during registration.</p>
 <p><label for="user_login">E-mail:</label>
 <?php $user_login = isset( $_POST['user_login'] ) ? $_POST['user_login'] : ''; ?>
 <input type="text" name="user_login" id="user_login" value="<?php echo $user_login; ?>" /></p>
@@ -82,6 +86,10 @@ echo '<div class="error_login"><p class="success">'. $success .'</p></div>';
 </p>
 </fieldset>
 </form>
+<?php }else{ ?>
+			<p>You are already logged in !!!</p>
+	<?php } ?>
+
 </div>
 
 </div>

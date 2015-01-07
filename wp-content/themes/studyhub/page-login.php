@@ -35,7 +35,9 @@ get_header(); ?>
 				        echo '<p class="login-msg"><strong>ERROR:</strong> Invalid username and/or password.</p>';  
 				    } elseif ( $login === "empty" ) {  
 				        echo '<p class="login-msg"><strong>ERROR:</strong> Username and/or Password is empty.</p>';  
-				    } elseif ( $login === "false" ) {  
+				    }elseif ( $login === "activation" ) {  
+				        echo '<p class="login-msg"><strong>ERROR:</strong> Your Account has not been activated yet.</p>';  
+				    }elseif ( $login === "false" ) {  
 				        echo '<p class="login-msg"><strong>ERROR:</strong> You are logged out.</p>';  
 				    }    
 		    ?>
@@ -44,6 +46,7 @@ get_header(); ?>
 		<div class="login-form"> 
 
 		<?php if ( !is_user_logged_in() ) { ?> 
+		
 		<?php 
 
 
@@ -58,6 +61,7 @@ get_header(); ?>
 		   );
 
 		 wp_login_form( $args ); ?> 
+		 
 		 <a href="<?php echo get_site_url() . "/reset"; ?>" title="Lost Password">Forgot Password?</a>
 		<a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>">Not Registered?</a> 
 		<?php }else{ ?>

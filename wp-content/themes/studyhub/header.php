@@ -71,7 +71,7 @@
 
 	<!-- Preloader-->
 	<div class="preloader">
-		<h2>Study Hub <img alt="" src="images/loader.gif"></h2>
+		<h2><img alt="" src="<?php echo get_template_directory_uri() ?>/images/loader.gif"></h2>
 	</div>
 
 	<!-- Container -->
@@ -89,7 +89,7 @@
 
 								<?php if ( !is_user_logged_in() ) { ?>
 
-								<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>">FREE REGISTRATION</a> </span>
+								<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() . "/registration"; ?>">FREE REGISTRATION</a> </span>
 								
 								<?php } ?>
 							</div>

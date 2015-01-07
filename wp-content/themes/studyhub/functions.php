@@ -545,16 +545,44 @@ add_action('init','redirect_login_page');
         wp_redirect( $login_page . '?login=failed' );  
         exit;  
     }  
-    add_action( 'wp_login_failed', 'login_failed' );  
+    add_action( 'wp_login_failed', 'login_failed' );
+
+
+    //add_filter('wp_authenticate_user', 'verify_user_activation',10,2);
+	function verify_user_activation ($user, $password) {
+		$login_page  = home_url( '/login/' );
+		$id = $user->ID;
+		$active = get_user_meta( $id, 'active', true );
+
+	   	if(!$active) {  
+            	wp_redirect( $login_page . "?login=activation" );  
+            	exit;  
+        	}else{
+        		wp_redirect( $login_page ."/wp-login.php" );  
+            	exit; 
+        	}
+     	}  
       
-    function verify_username_password( $user, $username, $password ) {  
-        $login_page  = home_url( '/login/' );  
-        if( $username == "" || $password == "" ) {  
+    function verify_username_password( $user, $username, $password ) {
+
+    	$u = get_user_by( 'login', $username );
+         	$id = $u->ID;
+
+		$active = get_user_meta( $id, 'active', true );  
+
+        $login_page  = home_url( '/login/' ); 
+
+        if( $username == "" || $password == "" ) {
+
             wp_redirect( $login_page . "?login=empty" );  
             exit;  
-        }  
+        }elseif($active === 'false') {  
+            	wp_redirect( $login_page . "?login=activation" );  
+            	exit;  
+        	}
+
     }  
-    add_filter( 'authenticate', 'verify_username_password', 1, 3);  
+    add_filter( 'authenticate', 'verify_username_password', 1, 3);
 
 
 /* Redirect to custom password reset page */
@@ -568,4 +596,17 @@ function redirect_reset_page() {
     }  
 }  
 add_action('init','redirect_reset_page');
+
+
+/* Redirect to custom registration page */
+function redirect_register_page() {  
+    $register_page  = home_url( '/registration/' );  
+    $page_viewed = basename($_SERVER['REQUEST_URI']);  
+  
+    if( $page_viewed == "wp-login.php?action=register" && $_SERVER['REQUEST_METHOD'] == 'GET') {  
+        wp_redirect($register_page);  
+        exit;  
+    }  
+}  
+add_action('init','redirect_register_page');
 
