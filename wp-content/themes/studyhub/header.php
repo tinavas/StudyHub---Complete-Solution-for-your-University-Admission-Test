@@ -85,31 +85,33 @@
 					<div class="top-margin">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-6 col-sm-7">
-
-								<?php if ( !is_user_logged_in() ) { ?>
-
-								<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() . "/registration"; ?>">FREE REGISTRATION</a> </span>
-								
-								<?php } ?>
-							</div>
-							<div class="col-md-6 col-sm-5">
+							<div class="col-md-12 col-sm-12">
 								<div class="right">
 
 									<?php if ( is_user_logged_in() ) { ?>
 
 									<span class="rego">
+										<i class="fa fa-pencil-square-o main-color"></i>
+											<a href="<?php echo get_site_url(). "/update-profile"; ?>"> 
+											Update Profile</a>	
+									</span>
+
+									<span class="rego">
 										<i class="fa fa-user main-color"></i>
 											<a href="<?php echo wp_logout_url( home_url() ); ?>"> 
-											LOGOUT</a>	
+											Logout</a>	
 									</span>	
 
 									<?php }else{ ?> 
+
+										<span class="rego"><i class="fa fa-gift main-color"></i> 
+											<a href="<?php echo get_site_url() . "/registration"; ?>">
+											Register Now</a> 
+										</span>
 									
-										<span class="rego">
-										<i class="fa fa-user main-color"></i>
+										<span class="rego"><i class="fa fa-user main-color"></i>
 											<a href="<?php echo get_site_url() . "/login"; ?>"> 
-											LOGIN NOW</a>
+											Login Now</a>
 									</span>
 										
 									<?php } ?>
@@ -151,7 +153,13 @@
 								</ul>
 							</li>
 							<li><a href="<?php echo site_url(); ?>/application/model-tests">Model Tests</a></li>
-							<li><a class="active" href="<?php echo site_url(); ?>/forums">Discussion Forums</a></li>
+							<li><a 
+
+								class=" <?php $uri = $_SERVER['REQUEST_URI'];
+							if (preg_match("/forums/",$uri))
+								{ echo 'active';} ?> " 
+
+								href="<?php echo site_url(); ?>/forums">Discussion Forums</a></li>
 							</ul>
 						</div>
 				</div>

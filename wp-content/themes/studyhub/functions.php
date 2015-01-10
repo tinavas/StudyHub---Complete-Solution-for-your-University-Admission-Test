@@ -609,4 +609,4 @@ function redirect_register_page() {
     }  
 }  
 add_action('init','redirect_register_page');
-
+?>

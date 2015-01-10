@@ -75,27 +75,37 @@
 					<div class="top-margin">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-6 col-sm-7">
-
-								<?php if ( !is_user_logged_in() ) { ?>
-									<span class="rego"><i class="fa fa-gift main-color"></i> <a href="<?php echo get_site_url() . "/registration"; ?>">FREE REGISTRATION</a> </span>
-								<?php } ?>
-							</div>
-							<div class="col-md-6 col-sm-5">
+							<div class="col-md-12 col-sm-12">
 								<div class="right">
-									<?php if ( !is_user_logged_in() ) { ?>
-									<span class="rego"><i class="fa fa-user main-color"></i><a href="<?php echo get_site_url() . "/login"; ?>">LOGIN NOW</a>
-										</span>
 
-									<?php }else{ ?>
+									<?php if ( is_user_logged_in() ) { ?>
+
+									<span class="rego">
+										<i class="fa fa-pencil-square-o main-color"></i>
+											<a href="<?php echo get_site_url(). "/update-profile"; ?>"> 
+											Update Profile</a>	
+									</span>
 
 									<span class="rego">
 										<i class="fa fa-user main-color"></i>
 											<a href="<?php echo wp_logout_url( home_url() ); ?>"> 
-											LOGOUT</a>	
+											Logout</a>	
 									</span>	
-									<?php } ?>	
-										</div>					
+
+									<?php }else{ ?> 
+
+										<span class="rego"><i class="fa fa-gift main-color"></i> 
+											<a href="<?php echo get_site_url() . "/registration"; ?>">
+											Register Now</a> 
+										</span>
+									
+										<span class="rego"><i class="fa fa-user main-color"></i>
+											<a href="<?php echo get_site_url() . "/login"; ?>"> 
+											Login Now</a>
+									</span>
+										
+									<?php } ?>
+								</div>					
 							</div>
 						</div>
 					</div>
