@@ -609,4 +609,14 @@ function redirect_register_page() {
     }  
 }  
 add_action('init','redirect_register_page');
-?>
+
+
+/* Hide admin tool bar at toop */
+
+add_action('after_setup_theme', 'remove_admin_bar');
+ 
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+		show_admin_bar(false);
+	}
+}
