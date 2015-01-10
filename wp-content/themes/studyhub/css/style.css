@@ -6750,6 +6750,11 @@ ul.profile li{
   padding-bottom: 10px !important;
 }
 
+.button-shortcodes.version-1:hover {
+    border: 2px solid #2ECC71;
+    background: none repeat scroll 0% 0% #2ECC71;
+}
+
 .recent-list li:last-child{
   border-bottom: none;
 }
@@ -6760,4 +6765,152 @@ ul.profile li{
   margin-bottom:10px !important;
 }
 
+.button-shortcodes.version-1 {
+    color: #212121;
+    border: 1px solid #212121;
+    border-radius: 3px;
+    transition: all 300ms linear 0s;
+}
+
+.button-shortcodes.text-padding-4 {
+    padding: 5px 15px;
+}
+.button-shortcodes.text-size-4 {
+    font-size: 12px;
+}
+.button-shortcodes {
+    font-family: "Lato",sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.button-shortcodes a{
+  color: #212121;
+}
+
+.button-shortcodes a:hover{
+  text-decoration: none;
+}
+
+.button-shortcodes span {
+    font-family: "FontAwesome";
+    padding-right: 5px;
+}
+.button-shortcodes.version-1:hover {
+    border: 1px solid #2ECC71;
+    background: none repeat scroll 0% 0% #2ECC71;
+}
+.button-shortcodes.version-1:hover, .button-shortcodes.version-1:hover a {
+    color: #FFF;
+}
+
+#wp-submit, input[type='submit']{
+  background: none repeat scroll 0% 0% #2ECC71 !important;
+  color: #FFF;
+  border-radius: 3px;
+  box-shadow: 0px 3px 0px #212121;
+  transition: all 300ms linear 0s;
+  padding: 10px 35px;
+  font-size: 14px;
+  font-family: "Lato",sans-serif;
+  cursor: pointer;
+  font-weight: 400;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+#wp-submit:hover, input[type='submit']:hover{
+  box-shadow: 0px 3px 0px #2ECC71;
+  background: none repeat scroll 0% 0% #212121 !important;
+}
+
+
+input[type='text']:focus, input[type='password']:focus, textarea:focus {
+    border: 1px solid #2ECC71 !important;
+    outline: 0px none !important;
+}
+
+.alert.alert-green {
+    background-color: #C5EBD4;
+    border-left: 3px solid #8CD7AA;
+}
+
+.alert.alert-red {
+    background-color: #FFCCCB;
+    border-left: 3px solid #FF817F;
+}
+.alert {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.alert p {
+    font-family: "Lato",sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    color: #212121 !important;
+    letter-spacing: 2px;
+}
+
+p code.inline{
+  color:#212121;
+  background-color: #FFCCCB;
+
+}
+
+code.inline{
+  color:#212121;
+}
+
+p.green-bg code.inline{
+  background-color: #C5EBD4;
+}
+
+form#rego-form p label{
+  width:200px;
+  text-align: right;
+  font-size: 16px;
+}
+
+span.redstar{
+  color: red;
+}
+
+form#rego-form input[type='text'], form#rego-form input[type='password']{
+  width:304px;
+}
+
+form#rego-form .g-recaptcha{
+  margin-left:45%;
+  margin-bottom: 20px;
+}
+
+form#rego-form input[type='submit']{
+  margin-left:24px;
+}
+
+form#rego-form code.inline{
+  background-color: #fff;
+}
+
+form#adduser p label{
+  width:210px;
+  text-align: right;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+form#adduser input[type='text'], form#adduser input[type='password']{
+  width:304px;
+}
+
+form#adduser input[type='submit']{
+  margin-left: 27px;
+  margin-top: 10px;
+}
 

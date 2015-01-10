@@ -106,21 +106,21 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 $update  = (isset($_GET['update']) ) ? $_GET['update'] : 0;
 
 if($update === 'success') {
-	_e('Your profile have been updated successfully.', 'profile');
+	_e('<div class="alert alert-green"><p>Your profile have been updated successfully.</p></div>', 'profile');
 }elseif($update === 'failed'){
-	_e('Updating your profile failed. Please try again.', 'profile');
+	_e('<div class="alert alert-red"><p>Updating your profile failed. Please try again.</p></div>', 'profile');
 }
 
 ?>
 
 
 <?php if ( !is_user_logged_in() ){ ?>
-        <p class="warning">
-            <?php _e('You must be logged in to edit your profile.', 'profile'); ?>
-        </p><!-- .warning -->
+        <div class="alert alert-red">
+            <?php _e('<p>You must be logged in to edit your profile.</p>', 'profile'); ?>
+        </div><!-- .warning -->
 
 <?php }else{?>
-    <?php if ( count($error) > 0 ) echo '<p class="error">' . implode("<br />", $error) . '</p>'; ?>
+    <?php if ( count($error) > 0 ) echo '<div class="alert alert-red"><p>' . implode("<br />", $error) . '</p></div>'; ?>
     <form method="post" id="adduser" action="<?php the_permalink(); ?>">
         <p class="form-username">
             <label for="first-name"><?php _e('First Name', 'profile'); ?></label>
@@ -131,19 +131,19 @@ if($update === 'success') {
             <input class="text-input" name="last-name" type="text" id="last-name" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" />
         </p><!-- .form-username -->
         <p class="form-username">
-            <label for="user-name"><?php _e('User Name *', 'profile'); ?></label>
+            <label for="user-name"><?php _e('User Name <span class="redstar">*</span>', 'profile'); ?></label>
             <input class="text-input" name="user-name" type="text" id="user-name" value="<?php the_author_meta( 'user_login', $current_user->ID ); ?>" />
         </p><!-- .form-username -->
         <p class="form-email">
-            <label for="email"><?php _e('E-mail *', 'profile'); ?></label>
+            <label for="email"><?php _e('E-mail <span class="redstar">*</span>', 'profile'); ?></label>
             <input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
         </p><!-- .form-email -->
         <p class="form-password">
-            <label for="pass1"><?php _e('Password *', 'profile'); ?> </label>
+            <label for="pass1"><?php _e('Password <span class="redstar">*</span>', 'profile'); ?> </label>
             <input class="text-input" name="pass1" type="password" id="pass1" />
         </p><!-- .form-password -->
         <p class="form-password">
-            <label for="pass2"><?php _e('Confirm Password *', 'profile'); ?></label>
+            <label for="pass2"><?php _e('Confirm Password <span class="redstar"><span class="redstar"><span class="redstar">*</span></span></span>', 'profile'); ?></label>
             <input class="text-input" name="pass2" type="password" id="pass2" />
         </p><!-- .form-password -->
 

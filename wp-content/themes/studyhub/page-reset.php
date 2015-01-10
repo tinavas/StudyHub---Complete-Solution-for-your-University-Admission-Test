@@ -59,16 +59,16 @@ $headers[] = "X-Mailer: PHP \r\n";
 $headers[] = 'From: '.$sender.' < '.$email.'>' . "\r\n";
 $mail = wp_mail( $to, $subject, $message, $headers );
 if( $mail )
-$success = 'Check your email address for you new password. 
+$success = 'Your password has been reset. Check your email address for you new password. 
 Do not forget to change the password after logged in.';
 } else {
 $error = 'Oops something went wrong updaing your account.';
 }
 }
 if( ! empty( $error ) )
-echo '<div class="message"><p class="error"><strong>ERROR:</strong> '. $error .'</p></div>';
+echo '<div class="alert alert-red"<p><strong>ERROR:</strong> '. $error .'</p></div>';
 if( ! empty( $success ) )
-echo '<div class="error_login"><p class="success">'. $success .'</p></div>';
+echo '<div class="alert alert-green"><p><strong>WELL DONE:</strong>'. $success .'</p></div>';
 }
 ?>
  

@@ -29,6 +29,10 @@ get_header(); ?>
 		
 		<?php
 
+		if(is_user_logged_in()){
+			echo '<div class="alert alert-green">You are already logged in !!!</P></div>';
+		}else{
+
 		if(isset($_GET['id']) && isset($_GET['key'])){
 
 			$username = esc_attr( $_GET['id'] );
@@ -45,24 +49,23 @@ get_header(); ?>
 				$active = get_user_meta( $id, 'active', true );
 
 				if($active === 'true'){
-					echo "Your account has already been activated.";
-					echo "You will be able to log in at "; ?>
-					<a href="<?php echo get_site_url() . "/login"; ?>"><strong>Login Page.</strong></a>
-					<?php 
+					echo '<div class="alert alert-green"><p>Your account has already been activated. <br /> You will be able to log in at 
+					<a href="'.get_site_url() . '/login"><strong>Login Page.</strong></a></P></div>';
 				}elseif(update_user_meta( $id, 'active', 'true' )){
-					echo 'Your Account has been activated. To log in go to'; ?>
-					<a href="<?php echo get_site_url() . "/login"; ?>"><strong>Login Page.</strong></a>
-					<?php
+					echo '<div class="alert alert-green"><p>Your Account has been activated. To log in go to
+					<a href="'.get_site_url() . '/login"><strong>Login Page.</strong></a></P></div>';
 				}else{
-				echo "We are unable to activate your account now. Please try later or contact us.";
+				echo '<div class="alert alert-red">We are unable to activate your account now. Please try later or contact us.</P></div>';
 			}
 			}else{
-				echo "Your Activation key does match with our system.";
+				echo '<div class="alert alert-red">Your Activation key does match with our system.</P></div>';
 			}
 
 		}else{
-			echo "Something wrong happened with your activation key.";
+			echo '<div class="alert alert-red">Something wrong happened with your activation key.</P></div>';
 		}
+
+	}
 
 
 		?>

@@ -32,13 +32,13 @@ get_header(); ?>
 		    	$login  = (isset($_GET['login']) ) ? $_GET['login'] : 0;  
 
 		    	    if ( $login === "failed" ) {  
-				        echo '<p class="login-msg"><strong>ERROR:</strong> Invalid username and/or password.</p>';  
+				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> Invalid username and/or password.</p></div>';  
 				    } elseif ( $login === "empty" ) {  
-				        echo '<p class="login-msg"><strong>ERROR:</strong> Username and/or Password is empty.</p>';  
+				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> Username and/or Password is empty.</p></div>';  
 				    }elseif ( $login === "activation" ) {  
-				        echo '<p class="login-msg"><strong>ERROR:</strong> Your Account has not been activated yet.</p>';  
+				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> Your Account has not been activated yet.</p></div>';  
 				    }elseif ( $login === "false" ) {  
-				        echo '<p class="login-msg"><strong>ERROR:</strong> You are logged out.</p>';  
+				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> You are logged out.</p></div>';  
 				    }    
 		    ?>
 		</div>  
@@ -61,9 +61,17 @@ get_header(); ?>
 		   );
 
 		 wp_login_form( $args ); ?> 
-		 
-		 <a href="<?php echo get_site_url() . "/reset"; ?>" title="Lost Password">Forgot Password?</a>
-		<a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>">Not Registered?</a> 
+		
+		<div class="button-shortcodes text-size-4 text-padding-4 version-1"><span></span> 
+			<a href="<?php echo get_site_url() . "/reset"; ?>" title="Lost Password">
+			Forgot Password?</a>
+		</div>
+		<div class="button-shortcodes text-size-4 text-padding-4 version-1"><span></span> 
+			<a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>">
+			Not Registered?</a> 
+		</div>
+		
+
 		<?php }else{ ?>
 			<p>You are already logged in !!!</p>
 	<?php } ?>

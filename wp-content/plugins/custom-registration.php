@@ -11,41 +11,41 @@
   function registration_form( $username, $password, $cpassword, $email, $first_name, $last_name ) {
 
     echo '
-    <form action="' . $_SERVER['REQUEST_URI'] . '" method="post">
-    <div>
-    <label for="username">Username <strong>*</strong></label>
+    <form action="' . $_SERVER['REQUEST_URI'] . '" method="post" id="rego-form">
+    <p>
+    <label for="username">Username <span class="redstar">*</span></label>
     <input type="text" name="username" value="' . ( isset( $_POST['username'] ) ? $username : null ) . '">
-    </div>
+    </p>
      
-    <div>
-    <label for="password">Password <strong>*</strong></label>
+    <p>
+    <label for="password">Password <span class="redstar">*</span></label>
     <input type="password" name="password" value="">
-    </div>
+    </p>
 
-    <div>
-    <label for="cpassword">Confirm Password <strong>*</strong></label>
+    <p>
+    <label for="cpassword">Confirm Password <span class="redstar">*</span></label>
     <input type="password" name="cpassword" value="">
-    </div>
+    </p>
      
-    <div>
-    <label for="email">Email <strong>*</strong></label>
+    <p>
+    <label for="email">Email <span class="redstar">*</span></label>
     <input type="text" name="email" value="' . ( isset( $_POST['email']) ? $email : null ) . '">
-    </div>
+    </p>
      
     
-    <div>
+    <p>
     <label for="firstname">First Name</label>
     <input type="text" name="fname" value="' . ( isset( $_POST['fname']) ? $first_name : null ) . '">
-    </div>
+    </p>
      
-    <div>
+    <p>
     <label for="website">Last Name</label>
     <input type="text" name="lname" value="' . ( isset( $_POST['lname']) ? $last_name : null ) . '">
-    </div>
+    </p>
 
-    <div>
+ 
         <div class="g-recaptcha" data-sitekey="6LeaGwATAAAAAI4o0MepK0rLsCqvICWpEzrz638j"></div>
-    </div>
+  
      
     <input type="submit" name="submit" value="Register"/>
     </form>
@@ -94,17 +94,16 @@ if ( !$gcaptcha ) {
 }
 
 if ( is_wp_error( $reg_errors ) ) {
- 
+
+   echo '<div class="alert alert-red"><p>';
     foreach ( $reg_errors->get_error_messages() as $error ) {
-     
-        echo '<div>';
-        echo '<strong>ERROR</strong>:';
-        echo $error . '<br/>';
-        echo '</div>';
-         
+        echo '<span class="redstar">ERROR</span>:';
+        echo $error . '<br/>';   
     }
- 
+    echo '</div></p>';
 }
+
+ 
 
 }
 
@@ -153,16 +152,18 @@ function complete_registration() {
             $cpassword = '';
 
             if( $mail ){
-            echo "Registration complete. You will get an email to your email address with account activation link.
-            Please clink the link to activate your account.";
+            echo '<div class="alert alert-green"><p class="green-bg">Registration complete. 
+            You will get an email to your email address with account activation link.
+            Please clink the link to activate your account.</p></div>';
             } else {
-                echo "Registration complete. If you do not get an avtivation email, please contact us.";
+                echo '<div class="alert alert-green"><p class="green-bg">Registration complete. 
+                If you do not get an avtivation email, please contact us.</p></div>';
             }
 
            }else{
 
-            echo "Something wrong has been happened 
-            while craeting account. Please try again later.";
+            echo '<div class="alert alert-red"><p>Something wrong has been happened 
+            while creating account. Please try again later.</p></div>';
 
            } 
     }
@@ -212,7 +213,9 @@ function custom_registration_function() {
             $last_name
             );
         }else{
-            echo '<p>You are already logged in !!!</p>';
+            echo '<div class="alert alert-green"><p class="green-bg">You are already logged in !!!</p></div>';
+
+            
         }
 }
 
