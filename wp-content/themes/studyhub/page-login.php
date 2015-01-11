@@ -27,40 +27,27 @@ get_header(); ?>
 				<div class="title-section">
 <div class="container">
 		
-		<div class="login-branding">
-			<?php
-		    	$login  = (isset($_GET['login']) ) ? $_GET['login'] : 0;  
-
-		    	    if ( $login === "failed" ) {  
-				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> Invalid username and/or password.</p></div>';  
-				    } elseif ( $login === "empty" ) {  
-				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> Username and/or Password is empty.</p></div>';  
-				    }elseif ( $login === "activation" ) {  
-				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> Your Account has not been activated yet.</p></div>';  
-				    }elseif ( $login === "false" ) {  
-				        echo '<div class="alert alert-red"><p><strong>ERROR:</strong> You are logged out.</p></div>';  
-				    }    
-		    ?>
-		</div>  
+		<div class="status"></div> 
 
 		<div class="login-form"> 
 
 		<?php if ( !is_user_logged_in() ) { ?> 
 		
-		<?php 
-
-
-		$args = array(  
-		    'redirect' => $_SERVER['HTTP_REFERER'],
-		    'label_username' => __( 'Username: ' ),
-        	'label_password' => __( 'Password: ' ),
-        	'label_remember' => __( 'Remember Me' ),
-        	'label_log_in' => __( 'Log In' ),   
-		    'id_username' => 'user',  
-		    'id_password' => 'pass',  
-		   );
-
-		 wp_login_form( $args ); ?> 
+		<form id="login" action="login" method="post">
+			<p>
+        		<label for="username">Username </label>
+        		<input id="username" type="text" name="username">
+        	</p>
+        	<p>
+        		<label for="password">Password </label>
+        		<input id="password" type="password" name="password">
+        	</p>
+        	<?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
+        	<p>
+        		<input class="submit_button" type="submit" value="Login" name="submit">
+    		</p
+        	
+   	 	</form>
 		
 		<div class="button-shortcodes text-size-4 text-padding-4 version-1"><span></span> 
 			<a href="<?php echo get_site_url() . "/reset"; ?>" title="Lost Password">

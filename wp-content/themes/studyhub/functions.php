@@ -540,51 +540,7 @@ function redirect_login_page() {
 }  
 add_action('init','redirect_login_page');
 
-    function login_failed() {  
-        $login_page  = home_url( '/login/' );  
-        wp_redirect( $login_page . '?login=failed' );  
-        exit;  
-    }  
-    add_action( 'wp_login_failed', 'login_failed' );
-
-
-    //add_filter('wp_authenticate_user', 'verify_user_activation',10,2);
-	function verify_user_activation ($user, $password) {
-		$login_page  = home_url( '/login/' );
-		$id = $user->ID;
-		$active = get_user_meta( $id, 'active', true );
-
-	   	if(!$active) {  
-            	wp_redirect( $login_page . "?login=activation" );  
-            	exit;  
-        	}else{
-        		wp_redirect( $login_page ."/wp-login.php" );  
-            	exit; 
-        	}
-     	}  
-      
-    function verify_username_password( $user, $username, $password ) {
-
-    	$u = get_user_by( 'login', $username );
-         	$id = $u->ID;
-
-		$active = get_user_meta( $id, 'active', true );  
-
-        $login_page  = home_url( '/login/' ); 
-
-        if( $username == "" || $password == "" ) {
-
-            wp_redirect( $login_page . "?login=empty" );  
-            exit;  
-        }elseif($active === 'false') {  
-            	wp_redirect( $login_page . "?login=activation" );  
-            	exit;  
-        	}
-
-    }  
-    add_filter( 'authenticate', 'verify_username_password', 1, 3);
-
-
+  
 /* Redirect to custom password reset page */
 function redirect_reset_page() {  
     $reset_page  = home_url( '/reset/' );  
@@ -619,4 +575,57 @@ function remove_admin_bar() {
 	if (!current_user_can('administrator') && !is_admin()) {
 		show_admin_bar(false);
 	}
+}
+
+/* Ajax functions for login page */
+
+function ajax_login_init(){
+
+    wp_register_script('ajax-login-script', get_template_directory_uri() . '/js/ajax-login-script.js', array('jquery') ); 
+    wp_enqueue_script('ajax-login-script');
+
+    wp_localize_script( 'ajax-login-script', 'ajax_login_object', array( 
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'redirecturl' => $_SERVER['HTTP_REFERER'],
+        'loadingmessage' => __('<div class="alert alert-green"><p>Checking your creadentials, please wait...</p></div>')
+    ));
+
+    // Enable the user with no privileges to run ajax_login() in AJAX
+    add_action( 'wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
+}
+
+// Execute the action only if the user isn't logged in
+if (!is_user_logged_in()) {
+    add_action('init', 'ajax_login_init');
+}
+
+function ajax_login(){
+
+    // First check the nonce, if it fails the function will break
+    check_ajax_referer( 'ajax-login-nonce', 'security' );
+
+    // Nonce is checked, get the POST data and sign user on
+    $info = array();
+    $info['user_login'] = sanitize_user( $_POST['username'] );
+    $info['user_password'] = esc_attr( $_POST['password'] );
+    $info['remember'] = true;
+
+    // Check the user is active
+    $u = get_user_by( 'login', $info['user_login'] );
+	$id = $u->ID;
+	$active = get_user_meta( $id, 'active', true ); 
+
+	if($active === 'false'){
+			echo json_encode(array('loggedin'=>false, 'message'=>__('<div class="alert alert-red"><p>Your account has not been activated yet. Please visit your email and follow the link to activate it.</p></div>')));
+
+		}else{
+			$user_signon = wp_signon( $info, false );
+			if ( is_wp_error($user_signon) ){
+        		echo json_encode(array('loggedin'=>false, 'message'=>__('<div class="alert alert-red"><p>Your username and password combination is incorrect.</p></div>')));
+    			} else{
+	        	echo json_encode(array('loggedin'=>true, 'message'=>__('<div class="alert alert-green"><p>You logged in successfully. Now redirecting ....</p></div>')));	
+			}
+		}
+
+    die();
 }
