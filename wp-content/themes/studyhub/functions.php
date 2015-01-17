@@ -608,24 +608,386 @@ function ajax_login(){
     $info = array();
     $info['user_login'] = sanitize_user( $_POST['username'] );
     $info['user_password'] = esc_attr( $_POST['password'] );
-    $info['remember'] = true;
+    //$info['remember'] = true;
 
     // Check the user is active
-    $u = get_user_by( 'login', $info['user_login'] );
-	$id = $u->ID;
-	$active = get_user_meta( $id, 'active', true ); 
+    //$u = get_user_by( 'login', $info['user_login'] );
+	//$id = $u->ID;
+	//$active = get_user_meta( $id, 'active', true ); 
 
-	if($active === 'false'){
-			echo json_encode(array('loggedin'=>false, 'message'=>__('<div class="alert alert-red"><p>Your account has not been activated yet. Please visit your email and follow the link to activate it.</p></div>')));
-
-		}else{
-			$user_signon = wp_signon( $info, false );
-			if ( is_wp_error($user_signon) ){
-        		echo json_encode(array('loggedin'=>false, 'message'=>__('<div class="alert alert-red"><p>Your username and password combination is incorrect.</p></div>')));
-    			} else{
-	        	echo json_encode(array('loggedin'=>true, 'message'=>__('<div class="alert alert-green"><p>You logged in successfully. Now redirecting ....</p></div>')));	
+	$user_signon = wp_signon( $info, false );
+	if ( is_wp_error($user_signon) ){
+		echo json_encode(array('loggedin'=>false, 
+			'message'=>__('<div class="alert alert-red">
+				<p>
+					Your username and password combination is incorrect.
+				</p>
+				</div>')));
+		} else{
+    	echo json_encode(array('loggedin'=>true, 
+    		'message'=>__('<div class="alert alert-green">
+    			<p>
+    				You logged in successfully. Now redirecting ....
+    			</p>
+    			</div>')));	
 			}
+    die();
+}
+
+/* Ajax Function for Registration page */
+
+function ajax_registration_init(){
+	// localize wp-ajax, notice the path to our theme-ajax.js file
+	wp_enqueue_script( 'ajax-registration-script', get_stylesheet_directory_uri() . '/js/ajax-registration-script.js', array( 'jquery' ) );
+	wp_enqueue_script('ajax-registration-script');
+
+	wp_localize_script( 'ajax-registration-script', 'ajax_registration_object', array(
+	'registration_url'	=> admin_url( 'admin-ajax.php' ),
+	'site_url' => get_bloginfo('url'),
+	'theme_url' => get_bloginfo('template_directory')
+	) );
+
+	add_action( 'wp_ajax_nopriv_user_registration', 'rs_user_registration_callback' );
+	add_action( 'wp_ajax_user_registration', 'rs_user_registration_callback' );
+
+}
+
+if (!is_user_logged_in()) {
+    add_action('init', 'ajax_registration_init');
+}
+
+ 
+/*
+* @desc Register user
+*/
+function rs_user_registration_callback() {
+global $wpdb;
+global $reg_errors;
+$reg_errors = new WP_Error;
+
+$nonce = esc_attr($_POST['nonce']);
+if ( ! wp_verify_nonce( $nonce, 'rs_user_registration_action' ) )
+        die ( '<p class="error">Security checked!, Cheating huh?</p>' );
+
+$username = esc_attr( $_POST['username'] );
+$email = esc_attr( $_POST['email'] );
+$fname = esc_attr( $_POST['fname'] );
+$lname = esc_attr( $_POST['lname'] );
+$gcap = esc_attr( $_POST['gcap'] );
+
+
+if ( empty( $username ) || empty( $email ) ) {
+    $reg_errors->add('field', 'Required form field is missing');
+}
+
+if ( 4 > strlen( $username ) ) {
+    $reg_errors->add( 'username_length', 'Username too short. At least 4 characters is required' );
+}
+
+if ( username_exists( $username ) )
+    $reg_errors->add('user_name', 'Sorry, that username already exists!');
+
+if ( ! validate_username( $username ) ) {
+    $reg_errors->add( 'username_invalid', 'Sorry, the username you entered is not valid' );
+}
+
+if ( !is_email( $email ) ) {
+    $reg_errors->add( 'email_invalid', 'Email is not valid' );
+}
+
+if ( email_exists( $email ) ) {
+    $reg_errors->add( 'email', 'Email Already in use' );
+}
+
+if ( !$gcap ) {
+    $reg_errors->add( 'gcaptcha', 'You did not solve the reCAPTCHA. You are a robot.' );
+}
+
+
+if ( 1 > count( $reg_errors->get_error_messages() ) ) {
+
+        $random_password = wp_generate_password( 12, false );
+        $userdata = array(
+        'user_login'    =>   $username,
+        'user_email'    =>   $email,
+        'user_pass'     =>   $random_password,
+        'first_name'    =>   $first_name,
+        'last_name'     =>   $last_name,
+        );
+
+        if(wp_insert_user( $userdata )){
+           
+            $to = $email;
+            $subject = 'New Member Registration'; 
+            $message = 'Hello,';
+            $message .= "\n\n";
+            $message .= 'Please find below your account login info:';
+            $message .= "\n\n";
+            $message .= 'Username: '.$username;
+            $message .= "\n";
+            $message .= 'Password: '.$random_password;
+            $message .= "\n\n";
+            $message .= 'Please do not forget to change your password at your profile page after you logged in';
+            $headers = 'From: noreply@test.com' . "\r\n";           
+
+            $mail = wp_mail( $to, $subject, $message, $headers );
+
+            if( $mail ){
+ 
+            echo json_encode(array('loggedin'=>true, 
+	        		'message'=>__('<div class="alert alert-green">
+	        			<p>
+	        				Registration complete. 
+            You will get an email to your email address with your account login creadentials.
+	        			</p>
+	        			</div>')));
+            } else {
+
+                 echo json_encode(array('loggedin'=>true, 
+	        		'message'=>__('<div class="alert alert-green">
+	        			<p>
+	        				Registration complete. 
+                If you do not get an avtivation email, please contact us.
+	        			</p>
+	        			</div>')));
+            }
+
+           }else{
+
+            echo json_encode(array('loggedin'=>false, 
+	        		'message'=>__('<div class="alert alert-red">
+	        			<p>
+	        				Something wrong has been happened 
+            while creating account. Please try again later.
+	        			</p>
+	        			</div>')));
+
+           } 
+    }else{
+
+    	$e='';
+
+		foreach ( $reg_errors->get_error_messages() as $error ) {
+			$e .= $error . '<br/>';   
 		}
+
+		$error_message = '<div class="alert alert-red"><p>'. $e .'</p></div>'; 
+
+    	echo json_encode(array('loggedin'=>false, 'message'=>$error_message));
+    }
+
+die();
+}
+
+/* Ajax functions for login page */
+
+function ajax_profile_init(){
+
+    wp_register_script('ajax-profile-update-script', get_template_directory_uri() . '/js/ajax-profile-update-script.js', array('jquery') ); 
+    wp_enqueue_script('ajax-profile-update-script');
+
+    wp_localize_script( 'ajax-profile-update-script', 'ajax_profile_object', array( 
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'redirecturl' => $_SERVER['HTTP_REFERER']
+     ));
+
+    // Enable the user with no privileges to run ajax_login() in AJAX
+    add_action( 'wp_ajax_ajaxupdate', 'ajax_update' );
+}
+
+// Execute the action only if the user isn't logged in
+if (is_user_logged_in()) {
+    add_action('init', 'ajax_profile_init');
+}
+
+function ajax_update(){
+
+	/* Get user info. */
+	global $current_user;
+	get_currentuserinfo();
+
+	$current_username = $current_user->user_login;
+
+	$current_email = $current_user->user_email;
+
+	$error = array(); 
+
+    // First check the nonce, if it fails the function will break
+    check_ajax_referer( 'profile-nonce', 'hcheck' );
+
+    $username   =   sanitize_user( $_POST['username'] );
+    $password   =   esc_attr( $_POST['pass1'] );
+    $cpassword   =   esc_attr( $_POST['pass2'] );
+    $email      =   esc_attr( $_POST['email'] );
+    $fname =   sanitize_text_field( $_POST['fname'] );
+    $lname  =   sanitize_text_field( $_POST['lname'] );
+
+    if ( empty( $username ) ) {
+    	$error[] = __('Username field can not be empty.', 'profile');
+	}elseif( 4 > strlen( $username ) ) {
+    	$error[] = __('Username too short. At least 4 characters is required.', 'profile');
+	}else{
+		if ( username_exists( $username ) && ($username !=$current_username) ){
+	    	$error[] = __('This Username is already used by another user. Try a different one.', 'profile');
+		  }
+
+		if ( ! validate_username( $username ) ) {
+		    $error[] = __('Sorry, the username you entered is not valid.', 'profile');
+		}
+	}
+
+	if(!empty($email)){
+
+		if(!is_email($email)){
+		$error[] = __('The E-mail you entered is not valid.', 'profile');
+		}
+
+		if(email_exists($email) && ($email != $current_email)){
+			$error[] = __('This email is already used by another user.  Try a different one.', 'profile');
+		}
+		
+	}else{
+
+		$error[] = __('Email field can not be empty.', 'profile');
+	}
+
+
+	if ( empty($password ) or empty( $cpassword ) ){
+		$error[] = __('Password and/or Confirm Password Fields can not be empty.', 'profile');
+	}else{
+		if (5 > strlen( $password )) {
+			$error[] = __('Password must be more than 5 characters.', 'profile');
+		}
+		if ($password !== $cpassword) {
+			$error[] = __('Password and Confirm Password fields do not match.', 'profile');
+		}
+	}
+
+	
+    if ( count($error) == 0 ) {
+    	$user_id = wp_update_user( array ('ID' => $current_user->ID, 'user_login' => $username, 'user_pass' => $password, 'user_email' => $email  ));
+
+    	if ( !empty( $fname ) ){
+	    update_user_meta( $current_user->ID, 'first_name', $fname );
+	    }
+
+	    if ( !empty( $lname ) ){
+	        update_user_meta($current_user->ID, 'last_name', $lname );
+	    }
+
+	    if($user_id){
+	    	echo json_encode(array('update'=>true, 
+			'message'=>__('<div class="alert alert-green">
+				<p>
+					Your profile have been updated successfully.
+				</p>
+				</div>')));
+	    }else{
+	    	echo json_encode(array('update'=>true, 
+			'message'=>__('<div class="alert alert-green">
+				<p>
+					Updating your profile failed. Please try again.
+				</p>
+				</div>')));
+	    }
+
+    }else{
+
+    	$error_message = '<div class="alert alert-red"><p>' . implode("<br />", $error) . '</p></div>';
+    	echo json_encode(array('update'=>false, 
+			'message'=>$error_message));
+    }
+ 
+    die();
+}
+
+
+/* Ajax functions for password reset page */
+
+function ajax_reset_init(){
+
+    wp_register_script('ajax-reset-script', get_template_directory_uri() . '/js/ajax-reset-script.js', array('jquery') ); 
+    wp_enqueue_script('ajax-reset-script');
+
+    wp_localize_script( 'ajax-reset-script', 'ajax_reset_object', array( 
+        'ajaxurl' => admin_url( 'admin-ajax.php' )
+    ));
+
+    // Enable the user with no privileges to run ajax_login() in AJAX
+    add_action( 'wp_ajax_nopriv_ajaxreset', 'ajax_reset' );
+}
+
+// Execute the action only if the user isn't logged in
+if (!is_user_logged_in()) {
+    add_action('init', 'ajax_reset_init');
+}
+
+function ajax_reset(){
+
+    // First check the nonce, if it fails the function will break
+    check_ajax_referer( 'ajax-reset-nonce', 'security' );
+
+    $email = trim($_POST['email']);
+
+    if( empty( $email ) ) {
+	echo json_encode(array('loggedin'=>false, 
+			'message'=>__('<div class="alert alert-red">
+				<p>
+					Enter an e-mail address..
+				</p>
+				</div>')));
+	} else if( ! is_email( $email )) {
+	echo json_encode(array('loggedin'=>false, 
+			'message'=>__('<div class="alert alert-red">
+				<p>
+					Invalid e-mail address.
+				</p>
+				</div>')));
+	} else if( ! email_exists( $email ) ) {
+
+	echo json_encode(array('loggedin'=>false, 
+			'message'=>__('<div class="alert alert-red">
+				<p>
+					There is no user registered with that email address.
+				</p>
+				</div>')));
+	} else {
+	$random_password = wp_generate_password( 12, false );
+	$user = get_user_by( 'email', $email );
+	$update_user = wp_update_user( array (
+	'ID' => $user->ID,
+	'user_pass' => $random_password
+	)
+	);
+	// if  update user return true then lets send user an email containing the new password
+	if( $update_user ) {
+	$to = $email;
+	$subject = 'Your new password';
+	$sender = get_option('name');
+	$message = 'Your new password is: '.$random_password;
+	$headers[] = 'MIME-Version: 1.0' . "\r\n";
+	$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$headers[] = "X-Mailer: PHP \r\n";
+	$headers[] = 'From: '.$sender.' < '.$email.'>' . "\r\n";
+	$mail = wp_mail( $to, $subject, $message, $headers );
+	if( $mail )
+	echo json_encode(array('loggedin'=>true, 
+    		'message'=>__('<div class="alert alert-green">
+    			<p>
+    				Your password has been reset. Check your email address for you new password. 
+	Do not forget to change the password after logged in.
+    			</p>
+    			</div>')));	
+	} else {
+
+	echo json_encode(array('loggedin'=>false, 
+			'message'=>__('<div class="alert alert-red">
+				<p>
+					Oops something went wrong updaing your account.
+				</p>
+				</div>')));
+	}
+	}
 
     die();
 }

@@ -83,7 +83,7 @@
 									<span class="rego">
 										<i class="fa fa-pencil-square-o main-color"></i>
 											<a href="<?php echo get_site_url(). "/update-profile"; ?>"> 
-											Update Profile</a>	
+											Your Profile</a>	
 									</span>
 
 									<span class="rego">

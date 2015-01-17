@@ -50,11 +50,11 @@ get_header(); ?>
    	 	</form>
 		
 		<div class="button-shortcodes text-size-4 text-padding-4 version-1"><span></span> 
-			<a href="<?php echo get_site_url() . "/reset"; ?>" title="Lost Password">
+			<a href="<?php echo get_site_url() . "/password-reset"; ?>" title="Lost Password">
 			Forgot Password?</a>
 		</div>
 		<div class="button-shortcodes text-size-4 text-padding-4 version-1"><span></span> 
-			<a href="<?php echo get_site_url() . "/wp-login.php?action=register"; ?>">
+			<a href="<?php echo get_site_url() . "/registration"; ?>">
 			Not Registered?</a> 
 		</div>
 		

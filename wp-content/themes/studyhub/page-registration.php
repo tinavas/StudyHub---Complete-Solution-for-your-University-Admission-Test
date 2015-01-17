@@ -1,12 +1,4 @@
 <?php
-/**
- * The template for displaying login page
- *
- *
- * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
- */
 
 get_header(); ?>
 
@@ -26,30 +18,68 @@ get_header(); ?>
 <div class="section-content services-section">
 				<div class="title-section">
 <div class="container">
+
+	<div class="user-registartion">
 		
-		<?php
-			if ( have_posts() ) :
-				// Start the Loop.
-				while ( have_posts() ) : the_post();
+		<div id="status"></div> 
 
-					/*
-					 * Include the post format-specific template for the content. If you want to
-					 * use this in a child theme, then include a file called called content-___.php
-					 * (where ___ is the post format) and that will be used instead.
-					 */
-					get_template_part( 'content', get_post_format() );
+		<?php if ( !is_user_logged_in() ) { ?> 
+		
+		<form method="post" id="rego-form">
 
-				endwhile;
-				// Previous/next post navigation.
-				twentyfourteen_paging_nav();
+			<?php
+				// to make our script safe, it's a best practice to use nonce on our form to check things out
+				if ( function_exists( 'wp_nonce_field' ) )
+				wp_nonce_field( 'rs_user_registration_action', 'rs_user_registration_nonce' );
+			?>
+		    <p>
+		    <label for="username">Username <span class="redstar">*</span></label>
+		    <input type="text" id="username" name="username" />
+		    </p>
+		     
+		    <p>
+		    <label for="email">Email <span class="redstar">*</span></label>
+		    <input type="text" id="email" name="email"  />
+		    </p>
+		     
+		    
+		    <p>
+		    <label for="fname">First Name</label>
+		    <input type="text" id="fname" name="fname" />
+		    </p>
+		     
+		    <p>
+		    <label for="lname">Last Name</label>
+		    <input type="text" id="lname" name="lname" />
+		    </p>
 
-			else :
-				// If no content, include the "No posts found" template.
-				get_template_part( 'content', 'none' );
+ 
+    		<div class="g-recaptcha" data-sitekey="6LeaGwATAAAAAI4o0MepK0rLsCqvICWpEzrz638j"></div>
+    		<div id="gcap"></div>
 
-			endif;
-		?>
+  
+     		<p>
+    			<input type="submit" name="submit" id="submit" value="Register" />
+    			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ajax-loader.gif" id="preloader" alt="Preloader" />
+    		</p>
+    	</form>
+<script type="text/javascript">
+      var onloadCallback = function() {
+        grecaptcha.render('gcap', {
+          'sitekey' : '6LeaGwATAAAAAI4o0MepK0rLsCqvICWpEzrz638j'
+        });
+      };
+    </script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>		
+
+		<?php }else{ ?>
+			<p>You are already logged in !!! Why are you trying to register !!!</p>
+	<?php } ?>
+
 	</div>
+
+
+</div>
 
 		</div><!-- #content -->
 	</div><!-- #primary -->
@@ -57,5 +87,5 @@ get_header(); ?>
 </div><!-- #main-content -->
 
 <?php
+
 get_footer();
-?>

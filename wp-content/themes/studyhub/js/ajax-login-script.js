@@ -1,8 +1,9 @@
 jQuery(document).ready(function($) {
 
-     // Perform AJAX login on form submit
+    // Perform AJAX login on form submit
     $('form#login').on('submit', function(e){
-        $('div.status').html(ajax_login_object.loadingmessage);
+        $('form#login input[type="submit"]').prop( "disabled", true );
+        $('div.status').show().html(ajax_login_object.loadingmessage);
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -13,11 +14,10 @@ jQuery(document).ready(function($) {
                 'password': $('form#login #password').val(), 
                 'security': $('form#login #security').val() },
             success: function(data){
+                $('form#login input[type="submit"]').prop( "disabled", false );
                 $('div.status').html(data.message);
                 if (data.loggedin == true){
                     document.location.href = ajax_login_object.redirecturl;
-                }else{
-                    $('div.status').html(data.message);
                 }
             }
         });
