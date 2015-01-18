@@ -76,6 +76,21 @@ Route::get('model-tests/your-tests', function()
 	return View::make('modeltest.yourtests');
 });
 
+Route::get('biology/zoology', function()
+{
+	return View::make('biology.zoology');
+});
+
+Route::get('biology/botany', function()
+{
+	return View::make('biology.botany');
+});
+
+Route::get('biology/botany/chapter1', function()
+{
+	return View::make('biology.chapter');
+});
+
 
 
 

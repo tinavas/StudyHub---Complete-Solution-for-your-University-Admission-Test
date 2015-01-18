@@ -25,6 +25,7 @@
 	{{ HTML::style('theme/css/owl.theme.css') }}
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	{{ HTML::style('theme/css/animate.css') }}
+	{{ HTML::style('theme/css/layout.css') }}
 
 	{{ HTML::style('theme/css/style.css') }}
 
@@ -274,6 +275,9 @@
 		<!-- End footer -->
 	</div>
 	<!-- End Container -->
+
+	<script type="text/javascript" src="{{ url('/theme/js/smk-accordion.js') }}"></script>
+	<script type="text/javascript" src="{{ url('/theme/js/custom-tabs.js') }}"></script>
 	
 
 </body>

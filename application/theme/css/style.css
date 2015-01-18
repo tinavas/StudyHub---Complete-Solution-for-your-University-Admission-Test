@@ -6828,3 +6828,14 @@ span.redstar{
   color: red;
 }
 
+.category-widget h2 a{
+  color:#2ECC71;
+}
+
+.smk_accordion .accordion_in:hover > .acc_head {
+    background: none repeat scroll 0% 0% #2ECC71;
+}
+
+.smk_accordion .accordion_in.acc_active > .acc_head {
+    background: none repeat scroll 0% 0% #2ECC71;
+}
