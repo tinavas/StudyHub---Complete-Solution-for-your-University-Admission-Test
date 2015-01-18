@@ -11,119 +11,68 @@
 
 @section('content')
 
-<div class="section-content sidebar-widgets-section">
 
-				<div class="title-section">
-					<div class="container triggerAnimation animated" data-animate="bounceIn">
-						<h1>Botany - Chapter wise lecture and exercises with solution</h1>		
-					</div>
-				</div>
-
+<div class="section-content page-banner-section2">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="sidebar">
-							
-	   							<div class="category-widget widget">
-									<h2> <a href="{{ url('/biology/botany/chapter1') }}">Chapter#1</a> </h2>
-									<ul class="category-list">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Art Projects</a></li>
-										<li><a href="#">Photoshop 2014</a></li>
-										<li><a href="#">IOS Develop</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">Wordpress</a></li>
-									</ul>
-								</div>
-      															
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="sidebar">
-								
-								<div class="category-widget widget">
-									<h2> <a href="#">Chapter#2</a> </h2>
-									<ul class="category-list">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Art Projects</a></li>
-										<li><a href="#">Photoshop 2014</a></li>
-										<li><a href="#">IOS Develop</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">Wordpress</a></li>
-									</ul>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="sidebar">
-
-      							<div class="category-widget widget">
-									<h2> <a href="#">Chapter#3</a> </h2>
-									<ul class="category-list">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Art Projects</a></li>
-										<li><a href="#">Photoshop 2014</a></li>
-										<li><a href="#">IOS Develop</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">Wordpress</a></li>
-									</ul>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="sidebar">
-								<div class="category-widget widget">
-									<h2> <a href="#">Chapter#4</a> </h2>
-									<ul class="category-list">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Art Projects</a></li>
-										<li><a href="#">Photoshop 2014</a></li>
-										<li><a href="#">IOS Develop</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">Wordpress</a></li>
-									</ul>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-3 col-sm-6">
-							<div class="sidebar">
-
-								<div class="category-widget widget">
-									<h2> <a href="#">Chapter#5</a> </h2>
-									<ul class="category-list">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Art Projects</a></li>
-										<li><a href="#">Photoshop 2014</a></li>
-										<li><a href="#">IOS Develop</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">Wordpress</a></li>
-									</ul>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="sidebar">
-
-								<div class="category-widget widget">
-									<h2> <a href="#">Chapter#6</a> </h2>
-									<ul class="category-list">
-										<li><a href="#">Business</a></li>
-										<li><a href="#">Art Projects</a></li>
-										<li><a href="#">Photoshop 2014</a></li>
-										<li><a href="#">IOS Develop</a></li>
-										<li><a href="#">Videos</a></li>
-										<li><a href="#">Wordpress</a></li>
-									</ul>
-								</div>
-								
-							</div>
+						<div class="col-sm-12">
+							<h1>Botany</h1>
 						</div>
 					</div>
+				</div>
+			</div>
+
+			<section class="section white-section section-padding-top-bottom">
+		
+			<div class="container">
+				<div class="sixteen columns">
+					<div class="accordion">
+					
+						<div class="accordion_in">
+							<div class="acc_head grey-section">FULLY CUSTOMIZABLE</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+
+						<div class="accordion_in">
+							<div class="acc_head grey-section">UNLIMITED OPTIONS</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+					
+						<div class="accordion_in">
+							<div class="acc_head grey-section">RETINA READY</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+
+						<div class="accordion_in">
+							<div class="acc_head grey-section">100% RESPONSIVE</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+				
+		</section>
+			<div class="section-content banner-text1-section">
+				<div class="container">
+					<h1>
+					<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+  						<a href="{{ url('/biology/botany/chapter1') }}">Chapter #1- Lectures and Exercises</a>
+					</h1>					
 				</div>
 			</div>
 

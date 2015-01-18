@@ -22,31 +22,45 @@
 					</div>
 				</div>
 			</div>
-			<div class="section-content about-section bord-bottom">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="about-content triggerAnimation animated" data-animate="fadeInRight">
-								<h1>Heading 1</h1>
-								<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Prae sent non sem eu mi malesuada viverra volutpat ut libero. Nullam a venenatis tellus. Nam fen convallis tristique. In imperdiet est sed aliquet imperdiet. Nulla libero orci, cursus ut consecr ac, tempus a odio. Etiam quis massa ac ante adipiscing consectetur. Duis dui turpis, porttitor sit amet metus sed, interdum tempus ipsum. Integer aliquam sem elementum pellentesque. Donec mollis eros dolor, a ongue neque venenatis vulputate. Etiam a eros adipiscing, dapibus ante id, luctus massa. Maecenas non quam interdum, aliquam leo a, ornare mi. Integer. faucibus turpis sed leo gravida laoreet. Curabitur at ligula. </p>
+			<section class="section white-section section-padding-top-bottom">
+		
+			<div class="container">
+				<div class="sixteen columns">
+					<div class="accordion">
+					
+						<div class="accordion_in">
+							<div class="acc_head grey-section">FULLY CUSTOMIZABLE</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
 
-			<div class="section-content about-section bord-bottom">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="about-content triggerAnimation animated" data-animate="fadeInRight">
-								<h1>Heading 2</h1>
-								<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Prae sent non sem eu mi malesuada viverra volutpat ut libero. Nullam a venenatis tellus. Nam fen convallis tristique. In imperdiet est sed aliquet imperdiet. Nulla libero orci, cursus ut consecr ac, tempus a odio. Etiam quis massa ac ante adipiscing consectetur. Duis dui turpis, porttitor sit amet metus sed, interdum tempus ipsum. Integer aliquam sem elementum pellentesque. Donec mollis eros dolor, a ongue neque venenatis vulputate. Etiam a eros adipiscing, dapibus ante id, luctus massa. Maecenas non quam interdum, aliquam leo a, ornare mi. Integer. faucibus turpis sed leo gravida laoreet. Curabitur at ligula. </p>
+						<div class="accordion_in">
+							<div class="acc_head grey-section">UNLIMITED OPTIONS</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 							</div>
 						</div>
+					
+						<div class="accordion_in">
+							<div class="acc_head grey-section">RETINA READY</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+
+						<div class="accordion_in">
+							<div class="acc_head grey-section">100% RESPONSIVE</div>
+							<div class="acc_content grey-section">
+							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 			</div>
+				
+		</section>
 
 			<div class="section-content banner-text1-section">
 				<div class="container">
