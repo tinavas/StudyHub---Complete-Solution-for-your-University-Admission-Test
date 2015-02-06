@@ -41,19 +41,34 @@ Route::get('contact-us', function()
 	return View::make('general.contact');
 });
 
-Route::get('biology', function()
+Route::get('biology-first-part', function()
 {
-	return View::make('biology.subject');
+	return View::make('biology.first-part');
 });
 
-Route::get('chemistry', function()
+Route::get('biology-second-part', function()
 {
-	return View::make('chemistry.subject');
+	return View::make('biology.second-part');
 });
 
-Route::get('physics', function()
+Route::get('chemistry-second-part', function()
 {
-	return View::make('physics.subject');
+	return View::make('chemistry.second-part');
+});
+
+Route::get('chemistry-first-part', function()
+{
+	return View::make('chemistry.first-part');
+});
+
+Route::get('physics-first-part', function()
+{
+	return View::make('physics.first-part');
+});
+
+Route::get('physics-second-part', function()
+{
+	return View::make('physics.second-part');
 });
 
 Route::get('english', function()
@@ -76,20 +91,6 @@ Route::get('model-tests/your-tests', function()
 	return View::make('modeltest.yourtests');
 });
 
-Route::get('biology/zoology', function()
-{
-	return View::make('biology.zoology');
-});
-
-Route::get('biology/botany', function()
-{
-	return View::make('biology.botany');
-});
-
-Route::get('biology/botany/chapter1', function()
-{
-	return View::make('biology.chapter');
-});
 
 
 

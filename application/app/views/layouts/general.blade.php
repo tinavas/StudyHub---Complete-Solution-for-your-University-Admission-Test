@@ -84,25 +84,25 @@
 									<span class="rego">
 										<i class="fa fa-pencil-square-o main-color"></i>
 											<a href="<?php echo get_site_url(). "/update-profile"; ?>"> 
-											Your Profile</a>	
+											আপনার প্রোফাইল</a>	
 									</span>
 
 									<span class="rego">
 										<i class="fa fa-user main-color"></i>
 											<a href="<?php echo wp_logout_url( home_url() ); ?>"> 
-											Logout</a>	
+											লগ আউট</a>	
 									</span>	
 
 									<?php }else{ ?> 
 
 										<span class="rego"><i class="fa fa-gift main-color"></i> 
 											<a href="<?php echo get_site_url() . "/registration"; ?>">
-											Register Now</a> 
+											নিবন্ধণ</a> 
 										</span>
 									
 										<span class="rego"><i class="fa fa-user main-color"></i>
 											<a href="<?php echo get_site_url() . "/login"; ?>"> 
-											Login Now</a>
+											লগইন</a>
 									</span>
 										
 									<?php } ?>
@@ -131,7 +131,7 @@
 				<div class="bottom-menu">
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
-								<li><a href="{{ url('/') }}">Home</a></li>
+								<li><a href="{{ url('/') }}">প্রথম পাতা</a></li>
 							<li class="drop"><a  
 
 							class=" <?php $uri = $_SERVER['REQUEST_URI'];
@@ -142,13 +142,16 @@
 								preg_match("/knowledge/",$uri))
 								{ echo 'active';} ?> " 
 
-								href="#">Study and Practice</a>
+								href="#">আলোচনা ও অনুশীলন</a>
 								<ul class="drop-down">
-									<li><a href="{{ url('/biology') }}">Biology</a></li>
-									<li><a href="{{ url('/chemistry') }}">Chemistry</a></li>
-									<li><a href="{{ url('/physics') }}">Physics</a></li>
-									<li><a href="{{ url('/english') }}">English</a></li>
-									<li><a href="{{ url('/knowledge') }}">General Knowledge</a></li>
+									<li><a href="{{ url('/biology-first-part') }}">জীববিজ্ঞান - প্রথম পত্র</a></li>
+									<li><a href="{{ url('/biology-second-part') }}">জীববিজ্ঞান - দ্বিতীয় পত্র</a></li>
+									<li><a href="{{ url('/chemistry-first-part') }}">রসায়ন - প্রথম পত্র</a></li>
+									<li><a href="{{ url('/chemistry-second-part') }}">রসায়ন - দ্বিতীয় পত্র</a></li>
+									<li><a href="{{ url('/physics-first-part') }}">পদার্থ বিজ্ঞান-প্রথম পত্র</a></li>
+									<li><a href="{{ url('/physics-second-part') }}">পদার্থ বিজ্ঞান-দ্বিতীয় পত্র</a></li>
+									<li><a href="{{ url('/english') }}">ইংরেজী</a></li>
+									<li><a href="{{ url('/knowledge') }}">সাধারন জ্ঞান</a></li>
 								</ul>
 							</li>
 							<li><a 
@@ -156,8 +159,8 @@
 								class=" <?php $uri = $_SERVER['REQUEST_URI'];
 								if (preg_match("/model-tests/",$uri) ){ echo 'active';} ?> "
 
-								href="{{ url('/model-tests') }}">Model Tests</a></li>
-							<li><a href="<?php echo get_site_url() . "/forums"; ?>">Discussion Forums</a></li>
+								href="{{ url('/model-tests') }}">মডেল টেস্ট</a></li>
+							<li><a href="<?php echo get_site_url() . "/forums"; ?>">ফোরাম</a></li>
 							</ul>
 						</div>
 				</div>
@@ -278,6 +281,46 @@
 
 	<script type="text/javascript" src="{{ url('/theme/js/smk-accordion.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/theme/js/custom-tabs.js') }}"></script>
+
+
+<!-- For Ajax Request -->
+	<script>
+		$(document).ready(function(e) {
+
+		$('#cssmenu a.ajax').on('click', function(e){
+			e.preventDefault();
+			
+			var data = $(this).attr('href');
+
+			var post_data = data.split("/");
+
+			$('#display-window .content-window').html('');
+
+			$('#display-window .loader').css({'visibility':'visible'});
+			$.ajax({
+				type: "POST",
+				url: "{{ url('/app/ajax.php') }}",
+				data: {
+					'subject' : post_data[0],
+					'chapter' : post_data[1],
+					'topic' : post_data[2]
+				},
+				cache: false,
+				success: function(data){
+					$('#display-window .loader').css({'visibility':'hidden'});
+					$('#display-window .content-window').html(data);
+				},
+				 error: function() {
+				 	$('#display-window .loader').css({'visibility':'hidden'});
+					$('#display-window .content-window').html('<h5>An error has occurred</h5>');
+					}
+			});
+
+		});
+
+
+		});
+	</script>
 	
 
 </body>

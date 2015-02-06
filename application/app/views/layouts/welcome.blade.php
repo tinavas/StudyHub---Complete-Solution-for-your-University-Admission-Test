@@ -89,25 +89,25 @@
 									<span class="rego">
 										<i class="fa fa-pencil-square-o main-color"></i>
 											<a href="<?php echo get_site_url(). "/update-profile"; ?>"> 
-											Your Profile</a>	
+											আপনার প্রোফাইল</a>	
 									</span>
 
 									<span class="rego">
 										<i class="fa fa-user main-color"></i>
 											<a href="<?php echo wp_logout_url( home_url() ); ?>"> 
-											Logout</a>	
+											লগ আউট</a>	
 									</span>	
 
 									<?php }else{ ?> 
 
 										<span class="rego"><i class="fa fa-gift main-color"></i> 
 											<a href="<?php echo get_site_url() . "/registration"; ?>">
-											Register Now</a> 
+											নিবন্ধ্ণ</a> 
 										</span>
 									
 										<span class="rego"><i class="fa fa-user main-color"></i>
 											<a href="<?php echo get_site_url() . "/login"; ?>"> 
-											Login Now</a>
+											লগইন</a>
 									</span>
 										
 									<?php } ?>
@@ -138,18 +138,21 @@
 				<div class="bottom-menu">
 						<div class="navbar-collapse collapse">
 							<ul class="nav container navbar-nav navbar-left">
-								<li><a class="active" href="{{ url('/') }}">Home</a></li>
-							<li class="drop"><a href="#">Study and Practice</a>
+								<li><a class="active" href="{{ url('/') }}">প্রথম পাতা</a></li>
+							<li class="drop"><a href="#">আলোচনা ও অনুশীলন</a>
 								<ul class="drop-down">
-									<li><a href="{{ url('/biology') }}">Biology</a></li>
-									<li><a href="{{ url('/chemistry') }}">Chemistry</a></li>
-									<li><a href="{{ url('/physics') }}">Physics</a></li>
-									<li><a href="{{ url('/english') }}">English</a></li>
-									<li><a href="{{ url('/knowledge') }}">General Knowledge</a></li>
+									<li><a href="{{ url('/biology-first-part') }}">জীববিজ্ঞান - প্রথম পত্র</a></li>
+									<li><a href="{{ url('/biology-second-part') }}">জীববিজ্ঞান - দ্বিতীয় পত্র</a></li>
+									<li><a href="{{ url('/chemistry-first-part') }}">রসায়ন - প্রথম পত্র</a></li>
+									<li><a href="{{ url('/chemistry-second-part') }}">রসায়ন - দ্বিতীয় পত্র</a></li>
+									<li><a href="{{ url('/physics-first-part') }}">পদার্থ বিজ্ঞান-প্রথম পত্র</a></li>
+									<li><a href="{{ url('/physics-second-part') }}">পদার্থ বিজ্ঞান-দ্বিতীয় পত্র</a></li>
+									<li><a href="{{ url('/english') }}">ইংরেজী</a></li>
+									<li><a href="{{ url('/knowledge') }}">সাধারন জ্ঞান</a></li>
 								</ul>
 							</li>
-							<li><a href="{{ url('/model-tests') }}">Model Tests</a></li>
-							<li><a href="<?php echo get_site_url() . "/forums"; ?>">Discussion Forums</a></li>
+							<li><a href="{{ url('/model-tests') }}">মডেল টেস্ট</a></li>
+							<li><a href="<?php echo get_site_url() . "/forums"; ?>">ফোরাম</a></li>
 							</ul>
 						</div>
 				</div>
