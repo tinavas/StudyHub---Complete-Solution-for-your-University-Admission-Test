@@ -6925,3 +6925,7 @@ form#adduser input[type='submit']{
   margin-right:25px;
   margin-left: 108px;
 }
+
+.content_push{
+  margin-top: 100px;
+}

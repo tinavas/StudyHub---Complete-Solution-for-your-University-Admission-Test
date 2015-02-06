@@ -28,14 +28,14 @@
 		<div id='cssmenu'>
 			<ul>
 			   <li>সূচিপত্র</li>
-			   <li class='last'><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোনটিই-নয়/নির্দেশিকা'><span>নির্দেশিকা</span></a></li>
+			   <li class='last'><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোনটিই-নয়/নির্দেশিকা/lecture'><span>নির্দেশিকা</span></a></li>
 			   <li class='has-sub'><a href='#'><span>কোষ ও এর গঠন</span></a>
 			      <ul>
-			         <li><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/গুরুত্বপূর্ণ-বিষয়াবলী'><span>গুরুত্বপূর্ণ বিষয়াবলী</span></a></li>
-			         <li><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/জেনে-রাখা-ভালো'><span>জেনে রাখা ভালো</span></a></li>
-			         <li><a class='ajax' href='#'><span>সম্ভাব্য প্রশ্ন ও উত্তর</span></a></li>
-			         <li><a class='ajax' href='#'><span>দক্ষতার পরীক্ষা</span></a></li>
-			         <li class='last'><a class='ajax' href='#'><span>আগের বছরের প্রশ্ন ও উত্তর</span></a></li>
+			         <li><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/গুরুত্বপূর্ণ-বিষয়াবলী/lecture'><span>গুরুত্বপূর্ণ বিষয়াবলী</span></a></li>
+			         <li><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/জেনে-রাখা-ভালো/lecture'><span>জেনে রাখা ভালো</span></a></li>
+			         <li><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/সম্ভাব্য-প্রশ্ন/question'><span>সম্ভাব্য প্রশ্ন ও উত্তর</span></a></li>
+			         <li><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/দক্ষতার-পরীক্ষা/question'><span>দক্ষতার পরীক্ষা</span></a></li>
+			         <li class='last'><a class='ajax' href='জীববিজ্ঞান-প্রথম-পত্র/কোষ-ও-এর-গঠন/আগের-বছরের-প্রশ্ন/question'><span>আগের বছরের প্রশ্ন ও উত্তর</span></a></li>
 			      </ul>
 			   </li>
 			   <li class='has-sub'><a href='#'><span>কোষ ও এর গঠ</span></a>

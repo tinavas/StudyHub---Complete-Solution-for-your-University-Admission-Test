@@ -303,7 +303,8 @@
 				data: {
 					'subject' : post_data[0],
 					'chapter' : post_data[1],
-					'topic' : post_data[2]
+					'topic' : post_data[2],
+					'category' : post_data[3]
 				},
 				cache: false,
 				success: function(data){

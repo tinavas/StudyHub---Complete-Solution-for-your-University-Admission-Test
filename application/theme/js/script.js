@@ -726,7 +726,7 @@ $(document).ready(function($) {
 
 		var docElem = document.documentElement,
 			didScroll = false,
-			changeHeaderOn = 50;
+			changeHeaderOn = 60;
 			document.querySelector( 'header' );
 		function init() {
 			window.addEventListener( 'scroll', function() {
@@ -741,9 +741,11 @@ $(document).ready(function($) {
 			var sy = scrollY();
 			if ( sy >= changeHeaderOn ) {
 				$( 'header' ).addClass('active');
+				$( '#content' ).addClass('content_push');
 			}
 			else {
 				$( 'header' ).removeClass('active');
+				$( '#content' ).removeClass('content_push');
 			}
 			didScroll = false;
 		}
