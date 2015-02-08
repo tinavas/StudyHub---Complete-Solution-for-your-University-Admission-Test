@@ -226,3 +226,15 @@ function save_question_meta($post_id) {
     } // end foreach
 }
 add_action('save_post', 'save_question_meta');
+
+function wpb_change_title_text( $title ){
+     $screen = get_current_screen();
+ 
+     if  ( 'question' == $screen->post_type ) {
+          $title = 'Enter Question Here';
+     }
+ 
+     return $title;
+}
+ 
+add_filter( 'enter_title_here', 'wpb_change_title_text' );

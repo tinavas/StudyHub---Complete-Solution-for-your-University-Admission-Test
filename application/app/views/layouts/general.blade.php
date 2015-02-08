@@ -283,47 +283,190 @@
 	<script type="text/javascript" src="{{ url('/theme/js/custom-tabs.js') }}"></script>
 
 
-<!-- For Ajax Request -->
+
 	<script>
+		/*Ajax Request for Side bar menu */
 		$(document).ready(function(e) {
 
-		$('#cssmenu a.ajax').on('click', function(e){
-			e.preventDefault();
-			
-			var data = $(this).attr('href');
+			$('body a.ajax').on('click', function(e){
+				e.preventDefault();
+				
+				var data = $(this).attr('href');
 
-			var post_data = data.split("/");
+				var post_data = data.split("/");
 
-			$('#display-window .content-window').html('');
+				$('#display-window .content-window').html('');
 
-			$('#display-window .loader').css({'visibility':'visible'});
-			$.ajax({
-				type: "POST",
-				url: "{{ url('/app/ajax.php') }}",
-				data: {
-					'subject' : post_data[0],
-					'chapter' : post_data[1],
-					'topic' : post_data[2],
-					'category' : post_data[3]
-				},
-				cache: false,
-				success: function(data){
-					$('#display-window .loader').css({'visibility':'hidden'});
-					$('#display-window .content-window').html(data);
-				},
-				 error: function() {
-				 	$('#display-window .loader').css({'visibility':'hidden'});
-					$('#display-window .content-window').html('<h5>An error has occurred</h5>');
-					}
+				$('#display-window .loader').css({'visibility':'visible'});
+				$.ajax({
+					type: "POST",
+					url: "{{ url('/app/ajax.php') }}",
+					data: {
+						'subject' : post_data[0],
+						'chapter' : post_data[1],
+						'topic' : post_data[2],
+						'category' : post_data[3],
+					},
+					cache: false,
+					success: function(data){
+						$('#display-window .loader').css({'visibility':'hidden'});
+						$('#display-window .content-window').css({'opacity':'0'}).html(data).animate({opacity: 1}, 300);
+					},
+					 error: function() {
+					 	$('#display-window .loader').css({'visibility':'hidden'});
+						$('#display-window .content-window').html('<h5>An error has occurred</h5>');
+						}
+				});
+
 			});
 
+
 		});
+
+		/*Ajax Request for Side bar menu */
+		$(document).ready(function(e) {
+
+			$('body').on('click', '#load-test', function(e){
+				e.preventDefault();
+				
+				var data = $(this).attr('href');
+
+				var post_data = data.split("/");
+
+				$('#display-window .content-window').html('');
+
+				$('#display-window .loader').css({'visibility':'visible'});
+				$.ajax({
+					type: "POST",
+					url: "{{ url('/app/ajax.php') }}",
+					data: {
+						'subject' : post_data[0],
+						'chapter' : post_data[1],
+						'topic' : post_data[2],
+						'category' : post_data[3],
+						'test' : post_data[4]
+					},
+					cache: false,
+					success: function(data){
+						$('#display-window .loader').css({'visibility':'hidden'});
+						$('#display-window .content-window').css({'opacity':'0'}).html(data).animate({opacity: 1}, 300);
+					},
+					 error: function() {
+					 	$('#display-window .loader').css({'visibility':'hidden'});
+						$('#display-window .content-window').html('<h5>An error has occurred</h5>');
+						}
+				});
+
+			});
 
 
 		});
+
+		/* for display right answer */
+
+		$('body').on('click','div#question_answer',function(){
+	    	$(this).next().css({'opacity': '0','display':'block'}).animate({opacity: 1}, 500);
+		}); 
+
+		/* For Question Pagination */
+
+		jQuery(function($) {
+		    $('body').on('click', '#pagination a', function(e){
+		        e.preventDefault();
+		        var link = $(this).attr('href').split("/");
+		        var element = link.length-2;
+		        var page = link[element];
+		        var subject = $('#subject').val();
+		        var chapter = $('#chapter').val();
+		        var topic = $('#topic').val();
+
+		        $('#display-window .loader').css({'visibility':'visible'});
+		        //$('#display-window .content-window').animate({opacity: 0}, 500);
+		        //alert(page);
+
+		        $.ajax({
+							type: "POST",
+							url: "{{ url('/app/ajax.php') }}",
+							data: {
+								'subject' : subject,
+								'chapter' : chapter,
+								'topic' : topic,
+								'category' : 'question',
+								'page' : page
+							},
+							cache: false,
+							success: function(data){
+								$('#display-window .content-window').css({'opacity':'0'});
+								$('#display-window .loader').css({'visibility':'hidden'});
+								$('#display-window .content-window').html(data).animate({opacity: 1}, 300);
+							},
+							 error: function() {
+							 	$('#display-window .loader').css({'visibility':'hidden'});
+								$('#display-window .content-window').html('<h5>An error has occurred.</h5>');
+								}
+				});
+
+		    });
+		});
+
+		/* getting test result */
+		jQuery(function($) {
+		    $('body').on('click', '#skill-test', function(e){
+		        e.preventDefault();
+		        var count = $('#count').val();
+		        var subject = $('#subject').val();
+		        var chapter = $('#chapter').val();
+		        var topic = $('#topic').val();
+
+
+		        var answer_paper = [];
+		        for (i = 1; i <= count; i++) {
+					    var id = $('input[name='+i+']').attr('id');
+		        		var question_id = id.substring(1);
+		        		var answer = $('input[name='+i+']:checked').val();
+
+		        		if(answer === undefined){
+		        			answer_paper[question_id] = 'unanswered';
+		        		}else{
+		        			answer_paper[question_id] = answer;
+		        		}
+						
+					}
+
+		        $('#display-window .loader').css({'visibility':'visible'});
+		        //$('#display-window .content-window').animate({opacity: 0}, 500);
+		        //alert(answer_paper[54]);
+		        //throw new Error();
+
+		        $.ajax({
+							type: "POST",
+							url: "{{ url('/app/ajax.php') }}",
+							data: {
+								'subject' : subject,
+								'chapter' : chapter,
+								'topic' : topic,
+								'category' : 'question',
+								'count' : count,
+								'answer_paper' : answer_paper
+							},
+							cache: false,
+							success: function(data){
+								$('#display-window .content-window').css({'opacity':'0'});
+								$('#display-window .loader').css({'visibility':'hidden'});
+								$('#display-window .content-window').html(data).animate({opacity: 1}, 300);
+							},
+							 error: function() {
+							 	$('#display-window .loader').css({'visibility':'hidden'});
+								$('#display-window .content-window').html('<h5>An error has occurred.</h5>');
+								}
+				});
+
+
+		    });
+		});
+
 	</script>
 	
-
 </body>
 
 </html>

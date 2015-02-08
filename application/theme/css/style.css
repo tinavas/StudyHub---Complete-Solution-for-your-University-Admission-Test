@@ -6862,11 +6862,11 @@ span.redstar{
 
 #display-window .loader {
   visibility: hidden;
-  position: fixed;
+  position: absolute;
   height:60px;
   width:60px;
-  left: 50%;
-  top: 50%;
+  left: 45%;
+  top: 100px;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
@@ -6994,3 +6994,156 @@ span.redstar{
 .content_push{
   margin-top: 100px;
 }
+
+.question{
+  border:1px solid #CCCCCC;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+}
+
+.question p{
+  color:  #333333;
+  margin-left: 15px;
+}
+
+.question h5{
+  color: #000000;
+}
+
+.question .text-padding-1{
+  padding: 7px 10px;
+}
+
+.question .button-shortcodes span{
+  margin-left: 10px;
+  margin-right: 0;
+  color:#2ECC71;
+}
+
+.question .button-shortcodes.version-1:hover{
+  background-color: #E6E6E6;
+  border: 1px solid #212121;
+  color:#2ECC71;
+}
+
+.question div#answer{
+  display:none;
+  float: left;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+.content-window{
+  width:100%;
+}
+
+#pagination{
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+}
+
+#pagination a{
+  padding: 1px 10px 4px 10px;
+  color: #212121;
+  border: 1px solid #212121;
+  border-radius: 3px;
+  transition: all 300ms linear 0s;
+  font-size: 12px;
+  font-family: "Lato",sans-serif;
+  cursor: pointer;
+  font-weight: 400;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#pagination a span{
+  font-size: 17px;
+  font-weight: bold;
+  margin-left: 5px;
+  color:#2ECC71;
+}
+#pagination a:hover{
+  background-color: #E6E6E6;
+  text-decoration: none;
+  color:#2ECC71;
+}
+
+
+/* Radio Button Style */
+input[type="radio"] {
+    display:none;
+}
+input[type="radio"] + label {
+    font-size: 13px;
+    color: #333;
+    font-family: "Open Sans",sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+}
+input[type="radio"] + label span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: -2px 8px 0px 0px;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color:#B3B3B3;
+    box-shadow: 1px 0px 2px #B3B3B3;
+}
+
+
+input[type="radio"]:checked + label span{
+     background-color:#2ECC71;
+}
+
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+  -webkit-transition:background-color 0.4s linear;
+  -o-transition:background-color 0.4s linear;
+  -moz-transition:background-color 0.4s linear;
+  transition:background-color 0.4s linear;
+}
+
+#skill-test, #load-test{
+    font-size: 16px;
+    margin-top: 15px;
+    margin-left: 34%;
+}
+}
+
+#skill-test span{
+  color:#2ECC71;
+}
+
+#skill-test:hover, #load-test:hover{
+  background-color: #E6E6E6;
+  color:#2ECC71;
+  border: 1px solid #212121;
+  text-decoration: none;
+}
+
+.test-info{
+  text-align: center;
+}
+
+.test-info span{
+  color:#2ECC71;
+}
+
+#display-window{
+  width:100%;
+}
+
+#display-window table{
+  width:100%;
+}
+
+#display-window table tr td, #display-window table tr th{
+  padding: 10px;
+  border: 1px solid #B3B3B3;
+  width: 33%;
+}
+
