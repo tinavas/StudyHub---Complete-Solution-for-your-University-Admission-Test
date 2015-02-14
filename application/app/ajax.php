@@ -8,6 +8,7 @@ $topic=sanitize_text_field($_POST['topic']);
 $category=sanitize_text_field($_POST['category']);
 $test=sanitize_text_field($_POST['test']);
 
+// for query lecture custom post
 if($category == 'lecture'){
 $args = array(
 	'post_type' => $category,
@@ -44,7 +45,7 @@ $args = array(
 
 }
 
-
+// For query question custom post other than skill test
 if($category == 'question' AND $topic != 'দক্ষতার-পরীক্ষা'){
 
 	if(isset($_POST['page'])){
@@ -148,6 +149,8 @@ if($category == 'question' AND $topic != 'দক্ষতার-পরীক্�
 
 }
 
+
+// query skill test questions summary and diplay instruction page
 if($category == 'question' AND $topic == 'দক্ষতার-পরীক্ষা' AND !isset($_POST['test']) AND !isset($_POST['answer_paper'])){
 
 	$args = array(
@@ -179,15 +182,17 @@ if($category == 'question' AND $topic == 'দক্ষতার-পরীক্�
 
 			if ( $query->have_posts() ) {?>
 				<div class="test-info">
-					<p>প্রশ্নের সংখ্যা : <span><?php echo $query->found_posts ?> 
+					<p>প্রশ্নের সংখ্যা : <span class="time"><?php echo $query->found_posts ?> 
 					&nbsp; &nbsp; &nbsp;  </span>পূর্ণমান : <span><?php echo $query->found_posts ?>&nbsp; &nbsp; &nbsp; </span>সময় : <span><?php echo $query->found_posts ?> মিনিট</p>
 					<h4>নির্দেশিকা</h4>
 				</div>
 				<ul>
-					<li>ধফ জফহ হু হফফ দফফ ভব্জভহফ জফভব্জ</li>
-					<li>জভহজ ফি ফঞ্জ ফফ ফ সদজদ</li>
-					<li>ফহফহ ফহ্বেফহ এজফহে ফহ জ্জদেফ</li>
-					<li>ঝদক্সজ ফিওেইফ ফ্বিফ ফজ্বেইফ ফ্বেরিফজ</li>
+					<li>দক্ষতার পরীক্ষায় অংশগ্রহনের পুর্বে পাঠ্যপুস্তক থেকে গুরুত্বপূর্ণ বিষয়গুলো ভালোভাবে পড়ে নিতে হবে।</li>
+					<li>আমাদের "জেনে রাখা ভাল" অংশটা পড়ে ফেলতে হবে।</li>
+					<li>এই পরীক্ষায় অংশগ্রহনের পুর্বে "সম্ভাব্য প্রশ্ন ও উত্তর" অংশটা ভালোভাবে চর্চা করতে হবে। একই সাথে পাঠ্যপুস্তক থেকে সেই সম্পর্কিত বিষয়গুলো পড়লে দক্ষতা আরো বাড়বে।</li>
+					<li>এই পরীক্ষায় প্রশ্নের সংখ্যা, পূর্ণমান এবং সময় উপরে বর্ণিত হল।</li>
+					<li>পরীক্ষা শুরু করার জন্য নিচের বোতাম চাপলে প্রশ্নপ্রত্র পাওয়া যাবে এবং সময় গণনা শুরু হবে।</li>
+					<li>পরীক্ষা উপরে নির্ধারিত সময়ের মধ্য শেষ করতে হবে।</li>
 				</ul>
 
 				<a id="load-test" class="button-shortcodes text-size-1 text-padding-1 version-1" href="<?php echo $subject.'/'.$chapter.'/'.$topic.'/'.$category.'/test'  ?>">তোমার পরীক্ষা শুরু করো !!!</a>
@@ -198,7 +203,7 @@ if($category == 'question' AND $topic == 'দক্ষতার-পরীক্�
 
 }
 
-
+// query skill test questions and display question on page
 if($category == 'question' AND $topic == 'দক্ষতার-পরীক্ষা' AND isset($_POST['test'])){
 	$args = array(
 	'post_type' => $category,
@@ -264,6 +269,7 @@ if($category == 'question' AND $topic == 'দক্ষতার-পরীক্�
 				</div>
 
 			</div>
+			<div id="countdowntimer"><span id="hms_timer"></span></div>
 
 			<?php
 			$count++;
@@ -288,6 +294,8 @@ if($category == 'question' AND $topic == 'দক্ষতার-পরীক্�
 
 }
 
+
+// display result summary of skill test.
 if(isset($_POST['answer_paper'])){
 
 	$answer_paper = $_POST['answer_paper'];
@@ -350,8 +358,7 @@ if(isset($_POST['answer_paper'])){
 				মোট প্রশ্ন : <span><?php echo $total_questions; ?> টি
 				&nbsp; &nbsp; &nbsp; </span>উত্তর দিয়েছ : <span><?php echo $answered; ?> টি
 				&nbsp; &nbsp; &nbsp; </span>উত্তর দাওনি : <span><?php echo $unanswered; ?> টি
-				&nbsp; &nbsp; &nbsp; </span>সঠিক উত্তর : <span><?php echo $correct_answer; ?> টি
-				&nbsp; &nbsp; &nbsp; </span>ভুল উত্তর: <span><?php echo $wrong_answer; ?> টি</span>
+				&nbsp; &nbsp; &nbsp; </span>সঠিক উত্তর : <span><?php echo $correct_answer; ?> টি</span>
 			</p>
 			<h3>তোমার ফলাফল: <span><?php echo $correct_answer.'/'.$total_questions ?> </span></h3>
 				<br />
