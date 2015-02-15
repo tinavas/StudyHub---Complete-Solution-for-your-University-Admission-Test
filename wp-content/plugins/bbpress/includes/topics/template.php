@@ -2976,11 +2976,12 @@ function bbp_forum_pagination_count() {
 
 		// Several topics in a forum with a single page
 		if ( empty( $to_num ) ) {
-			$retstr = sprintf( _n( 'Viewing %1$s topic', 'Viewing %1$s topics', $total_int, 'bbpress' ), $total );
+			$retstr = sprintf( _n( 'Viewing %1$s topic', 'মোট %1$s টি বিষয়', $total_int, 'bbpress' ), $total );
 
 		// Several topics in a forum with several pages
 		} else {
-			$retstr = sprintf( _n( 'Viewing topic %2$s (of %4$s total)', 'Viewing %1$s topics - %2$s through %3$s (of %4$s total)', $total_int, 'bbpress' ), $bbp->topic_query->post_count, $from_num, $to_num, $total );
+			//$retstr = sprintf( _n( 'Viewing topic %2$s (of %4$s total)', 'Viewing %1$s topics - %2$s through %3$s (of %4$s total)', $total_int, 'bbpress' ), $bbp->topic_query->post_count, $from_num, $to_num, $total );
+			$retstr = sprintf( _n( 'Viewing topic %2$s (of %4$s total)', '%1$s টি বিষয়, মোট %4$s টির মধ্যে (%2$s থেকে %3$s)', $total_int, 'bbpress' ), $bbp->topic_query->post_count, $from_num, $to_num, $total );
 		}
 
 		// Filter and return

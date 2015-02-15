@@ -31,7 +31,7 @@ exit();
               <div class="bb-item">
                 <div class="bb-custom-content">
                   <div class="slide-inner">
-                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a>
+                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="<?php echo get_template_directory_uri() ?>/images/image01.jpg" alt="Book" /></a>
                     </div>
                     <div class="col-md-8 book-detail">
                       <h2>Preparation for admission test from home</h2>
@@ -54,7 +54,7 @@ exit();
                         	We make sure you will not miss anything for your 100% preparation. </p>
                         </div>
                     </div>
-                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a></div>
+                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="<?php echo get_template_directory_uri() ?>/images/image01.jpg" alt="Book" /></a></div>
                   </div>
                 </div>
               </div>
@@ -62,7 +62,7 @@ exit();
               <div class="bb-item">
                 <div class="bb-custom-content">
                 	<div class="slide-inner">
-                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a> 
+                    <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="<?php echo get_template_directory_uri() ?>/images/image01.jpg" alt="Book" /></a> 
                     </div>
                     <div class="col-md-8 book-detail">
                       <h2>Never Under Estimate the Power of Community</h2>
@@ -87,7 +87,7 @@ exit();
                         <a href="#facebook-like" class="button-two">Like Us on <span class="btnfb"><i class="fa fa-facebook"></i></span>
                     </div>
                   </div>
-                  <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="{{ url('/theme/images/image01.jpg') }}" alt="Book" /></a> 
+                  <div class="col-md-4 book-holder"> <a href="book-detail.html"><img src="<?php echo get_template_directory_uri() ?>/images/image01.jpg" alt="Book" /></a> 
                     </div>
 
                 </div>
@@ -341,11 +341,6 @@ exit();
 				</div>
 			</div>
 
-		</div>
-		<!-- End content -->
-
-	
-</div><!-- #main-content -->
 
 <?php
 

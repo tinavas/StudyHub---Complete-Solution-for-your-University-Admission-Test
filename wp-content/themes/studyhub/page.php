@@ -11,14 +11,27 @@
  * @since Twenty Fourteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
 
-<div id="content">
 
+if ( is_single() ) :
+
+	the_title( '<div class="section-content page-banner-section2">
+		<div class="container"><div class="row">
+			<div class="col-sm-12"><h1>', 
+			'</h1></div></div></div></div>' );
+else :
+	the_title( '<div class="section-content page-banner-section2">
+		<div class="row">
+			<div class="col-sm-12"><h1>', '</h1></div></div></div>' );
+endif;
+
+?>
 
 <div class="section-content services-section">
 				<div class="title-section">
 <div class="container">
+
 		<?php
 			if ( have_posts() ) :
 				// Start the Loop.
@@ -46,7 +59,6 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 	
-</div><!-- #main-content -->
 
 <?php
 

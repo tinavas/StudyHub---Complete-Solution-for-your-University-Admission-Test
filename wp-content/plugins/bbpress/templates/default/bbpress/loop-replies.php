@@ -15,17 +15,17 @@
 
 	<li class="bbp-header">
 
-		<div class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></div><!-- .bbp-reply-author -->
+		<div class="bbp-reply-author"><?php  _e( 'লেখক',  'bbpress' ); ?></div><!-- .bbp-reply-author -->
 
 		<div class="bbp-reply-content">
 
 			<?php if ( !bbp_show_lead_topic() ) : ?>
 
-				<?php _e( 'Posts', 'bbpress' ); ?>
+				<?php _e( 'আলোচনা', 'bbpress' ); ?>
 
-				<?php bbp_topic_subscription_link(); ?>
+				<?php //bbp_topic_subscription_link(); ?>
 
-				<?php bbp_user_favorites_link(); ?>
+				<?php //bbp_user_favorites_link(); ?>
 
 			<?php else : ?>
 
@@ -57,13 +57,13 @@
 
 	<li class="bbp-footer">
 
-		<div class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></div>
+		<div class="bbp-reply-author"><?php  _e( 'লেখক',  'bbpress' ); ?></div>
 
 		<div class="bbp-reply-content">
 
 			<?php if ( !bbp_show_lead_topic() ) : ?>
 
-				<?php _e( 'Posts', 'bbpress' ); ?>
+				<?php _e( 'আলোচনা', 'bbpress' ); ?>
 
 			<?php else : ?>
 

@@ -38,9 +38,9 @@
 
 					<?php
 						if ( bbp_is_topic_edit() )
-							printf( __( 'Now Editing &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_topic_title() );
+							printf( __( 'ভুল সংশোধন &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_topic_title() );
 						else
-							bbp_is_single_forum() ? printf( __( 'Create New Topic in &ldquo;%s&rdquo;', 'bbpress' ), bbp_get_forum_title() ) : _e( 'Create New Topic', 'bbpress' );
+							bbp_is_single_forum() ? printf( __( '&ldquo;%s&rdquo; এ নতুন আলোচনার বিষয় শুরু করো', 'bbpress' ), bbp_get_forum_title() ) : _e( 'Create New Topic', 'bbpress' );
 					?>
 
 				</legend>
@@ -72,7 +72,7 @@
 					<?php do_action( 'bbp_theme_before_topic_form_title' ); ?>
 
 					<p>
-						<label for="bbp_topic_title"><?php printf( __( 'Topic Title (Maximum Length: %d):', 'bbpress' ), bbp_get_title_max_length() ); ?></label><br />
+						<label for="bbp_topic_title"><?php printf( __( 'আলোচনার বিষয় (সর্বাধিক দৈর্ঘ্য: %d):', 'bbpress' ), bbp_get_title_max_length() ); ?></label><br />
 						<input type="text" id="bbp_topic_title" value="<?php bbp_form_topic_title(); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_topic_title" maxlength="<?php bbp_title_max_length(); ?>" />
 					</p>
 
@@ -98,7 +98,7 @@
 						<?php do_action( 'bbp_theme_before_topic_form_tags' ); ?>
 
 						<p>
-							<label for="bbp_topic_tags"><?php _e( 'Topic Tags:', 'bbpress' ); ?></label><br />
+							<label for="bbp_topic_tags"><?php _e( 'বিষয়ের সংকেত:', 'bbpress' ); ?></label><br />
 							<input type="text" value="<?php bbp_form_topic_tags(); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_topic_tags" id="bbp_topic_tags" <?php disabled( bbp_is_topic_spam() ); ?> />
 						</p>
 
@@ -130,7 +130,7 @@
 
 						<p>
 
-							<label for="bbp_stick_topic"><?php _e( 'Topic Type:', 'bbpress' ); ?></label><br />
+							<label for="bbp_stick_topic"><?php _e( 'বিষয়ের প্রকার:', 'bbpress' ); ?></label><br />
 
 							<?php bbp_form_topic_type_dropdown(); ?>
 
@@ -142,7 +142,7 @@
 
 						<p>
 
-							<label for="bbp_topic_status"><?php _e( 'Topic Status:', 'bbpress' ); ?></label><br />
+							<label for="bbp_topic_status"><?php _e( 'বিষয়ের অবস্থা:', 'bbpress' ); ?></label><br />
 
 							<?php bbp_form_topic_status_dropdown(); ?>
 
@@ -161,11 +161,11 @@
 
 							<?php if ( bbp_is_topic_edit() && ( bbp_get_topic_author_id() !== bbp_get_current_user_id() ) ) : ?>
 
-								<label for="bbp_topic_subscription"><?php _e( 'Notify the author of follow-up replies via email', 'bbpress' ); ?></label>
+								<label for="bbp_topic_subscription"><?php _e( 'লেখকে ইমেইল জবাব পাঠাও', 'bbpress' ); ?></label>
 
 							<?php else : ?>
 
-								<label for="bbp_topic_subscription"><?php _e( 'Notify me of follow-up replies via email', 'bbpress' ); ?></label>
+								<label for="bbp_topic_subscription"><?php _e( 'কোনো জবাব থাকলে ইমেইল পাঠাও', 'bbpress' ); ?></label>
 
 							<?php endif; ?>
 						</p>
@@ -200,7 +200,7 @@
 
 						<?php do_action( 'bbp_theme_before_topic_form_submit_button' ); ?>
 
-						<button type="submit" tabindex="<?php bbp_tab_index(); ?>" id="bbp_topic_submit" name="bbp_topic_submit" class="button submit"><?php _e( 'Submit', 'bbpress' ); ?></button>
+						<button type="submit" tabindex="<?php bbp_tab_index(); ?>" id="bbp_topic_submit" name="bbp_topic_submit" class="button submit"><?php _e( 'সমর্পণ করুন', 'bbpress' ); ?></button>
 
 						<?php do_action( 'bbp_theme_after_topic_form_submit_button' ); ?>
 
@@ -231,7 +231,7 @@
 
 	<div id="no-topic-<?php bbp_topic_id(); ?>" class="bbp-no-topic">
 		<div class="bbp-template-notice">
-			<p><?php is_user_logged_in() ? _e( 'You cannot create new topics.', 'bbpress' ) : _e( 'You must be logged in to create new topics.', 'bbpress' ); ?></p>
+			<p><?php is_user_logged_in() ? _e( 'You cannot create new topics.', 'bbpress' ) : _e( 'নতুন আলোচনার বিষয় লেখার জন্য আপনাকে লগইন করতে হবে।', 'bbpress' ); ?></p>
 		</div>
 	</div>
 

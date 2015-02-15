@@ -26,7 +26,7 @@
 			<?php do_action( 'bbp_theme_before_reply_form' ); ?>
 
 			<fieldset class="bbp-form">
-				<legend><?php printf( __( 'Reply To: %s', 'bbpress' ), bbp_get_topic_title() ); ?></legend>
+				<legend><?php printf( __( 'জবাব দাও: %s', 'bbpress' ), bbp_get_topic_title() ); ?></legend>
 
 				<?php do_action( 'bbp_theme_before_reply_form_notices' ); ?>
 
@@ -72,7 +72,7 @@
 						<?php do_action( 'bbp_theme_before_reply_form_tags' ); ?>
 
 						<p>
-							<label for="bbp_topic_tags"><?php _e( 'Tags:', 'bbpress' ); ?></label><br />
+							<label for="bbp_topic_tags"><?php _e( 'সংকেত:', 'bbpress' ); ?></label><br />
 							<input type="text" value="<?php bbp_form_topic_tags(); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_topic_tags" id="bbp_topic_tags" <?php disabled( bbp_is_topic_spam() ); ?> />
 						</p>
 
@@ -94,7 +94,7 @@
 
 							<?php else : ?>
 
-								<label for="bbp_topic_subscription"><?php _e( 'Notify me of follow-up replies via email', 'bbpress' ); ?></label>
+								<label for="bbp_topic_subscription"><?php _e( 'আমাকে ইমেইলে প্রতিক্রিয়াগুলো জানাও', 'bbpress' ); ?></label>
 
 							<?php endif; ?>
 
@@ -132,7 +132,7 @@
 
 						<?php bbp_cancel_reply_to_link(); ?>
 
-						<button type="submit" tabindex="<?php bbp_tab_index(); ?>" id="bbp_reply_submit" name="bbp_reply_submit" class="button submit"><?php _e( 'Submit', 'bbpress' ); ?></button>
+						<button type="submit" tabindex="<?php bbp_tab_index(); ?>" id="bbp_reply_submit" name="bbp_reply_submit" class="button submit"><?php _e( 'সমর্পণ করুন', 'bbpress' ); ?></button>
 
 						<?php do_action( 'bbp_theme_after_reply_form_submit_button' ); ?>
 
@@ -171,7 +171,7 @@
 
 	<div id="no-reply-<?php bbp_topic_id(); ?>" class="bbp-no-reply">
 		<div class="bbp-template-notice">
-			<p><?php is_user_logged_in() ? _e( 'You cannot reply to this topic.', 'bbpress' ) : _e( 'You must be logged in to reply to this topic.', 'bbpress' ); ?></p>
+			<p><?php is_user_logged_in() ? _e( 'You cannot reply to this topic.', 'bbpress' ) : _e( 'এই আলোচনায় অংশগ্রহনের জন্য আপনাকে লগইন করতে হবে।', 'bbpress' ); ?></p>
 		</div>
 	</div>
 

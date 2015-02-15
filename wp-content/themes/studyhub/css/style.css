@@ -5790,7 +5790,7 @@ footer {
   background: #2f3032;
 }
 footer .up-footer {
-  padding: 84px 0 65px;
+  padding: 35px 0px 0;
 }
 footer .up-footer .footer-widget h2 {
   color: #434343;
@@ -5799,7 +5799,6 @@ footer .up-footer .footer-widget h2 {
   font-weight: 400;
   margin: 0 0 18px;
   color: #ffffff;
-  margin-bottom: 30px;
 }
 footer .up-footer .footer-widget p {
   color: #d4d4d4;
@@ -5843,22 +5842,22 @@ footer .up-footer .recent-widget ul {
   padding: 0;
 }
 footer .up-footer .recent-widget ul li {
-  list-style: none;
-  padding-top: 15px;
-  border-top: 1px solid #535353;
+  list-style: outside none none;
+  display: block;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #535353;
+  margin-bottom: 15px;
 }
-footer .up-footer .recent-widget ul li h2 {
+footer .up-footer .recent-widget ul li a {
+  display: inline-block;
   font-size: 13px;
   color: #888888;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   line-height: 24px;
   margin: 0 0 15px;
-  margin-bottom: 0;
   color: #d4d4d4;
-}
-footer .up-footer .recent-widget ul li h2 a {
-  color: #d4d4d4;
+  margin: 0;
 }
 footer .up-footer .recent-widget ul li span {
   font-size: 13px;
@@ -5866,11 +5865,11 @@ footer .up-footer .recent-widget ul li span {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   line-height: 24px;
-  margin: 0 0 15px;
+  margin: 0;
   display: inline-block;
   font-size: 12px;
   color: #b4b4b4;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 footer .up-footer .recent-widget ul li:first-child {
   padding-top: 0;
@@ -5883,7 +5882,7 @@ footer .up-footer .more-links-widget ul {
 footer .up-footer .more-links-widget ul li {
   list-style: none;
   display: block;
-  padding-bottom: 15px;
+  padding-bottom: 3px;
   border-bottom: 1px solid #535353;
   margin-bottom: 15px;
 }
@@ -5898,11 +5897,7 @@ footer .up-footer .more-links-widget ul li a {
   color: #d4d4d4;
   margin: 0;
 }
-footer .up-footer .more-links-widget ul li:last-child {
-  padding-bottom: 0px;
-  border-bottom: none;
-  margin-bottom: 0px;
-}
+
 footer .up-footer .flickr-widget ul {
   margin: 0;
   padding: 0;

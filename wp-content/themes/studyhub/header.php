@@ -35,6 +35,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/owl.theme.css" media="screen">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/animate.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/flip.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/flip-demo.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/main-slider.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/style.css" media="screen">
 	
@@ -52,6 +54,7 @@
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/plugins-scroll.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/waypoint.min.js"></script>
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/jquery.flexslider.js"></script>
+	
 
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/YTPlayer.css" media="screen">
 	<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/js/script.js"></script>
@@ -162,7 +165,7 @@
 							if (preg_match("/forums/",$uri))
 								{ echo 'active';} ?> " 
 
-								href="<?php echo site_url(); ?>/forums">ফোরাম</a></li>
+								href="<?php echo site_url(); ?>/forum">ফোরাম</a></li>
 							</ul>
 						</div>
 				</div>

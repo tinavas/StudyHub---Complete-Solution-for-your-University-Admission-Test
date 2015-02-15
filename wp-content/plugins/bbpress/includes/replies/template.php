@@ -2347,11 +2347,11 @@ function bbp_topic_pagination_count() {
 
 			// Several replies in a topic with a single page
 			if ( empty( $to_num ) ) {
-				$retstr = sprintf( _n( 'Viewing %1$s reply', 'Viewing %1$s replies', $total_int, 'bbpress' ), $total );
+				$retstr = sprintf( _n( '%1$s টি জবার', 'Viewing %1$s replies', $total_int, 'bbpress' ), $total );
 
 			// Several replies in a topic with several pages
 			} else {
-				$retstr = sprintf( _n( 'Viewing %2$s replies (of %4$s total)', 'Viewing %1$s replies - %2$s through %3$s (of %4$s total)', $bbp->reply_query->post_count, 'bbpress' ), $bbp->reply_query->post_count, $from_num, $to_num, $total );
+				$retstr = sprintf( _n( '%2$s টি জবাব (মোট %4$s এর মধ্যে)', 'মোট %4$s এর মধ্যে %1$s টা জবাব (%2$s থেকে %3$s)', $bbp->reply_query->post_count, 'bbpress' ), $bbp->reply_query->post_count, $from_num, $to_num, $total );
 			}
 
 		// We are including the lead topic
@@ -2359,11 +2359,11 @@ function bbp_topic_pagination_count() {
 
 			// Several posts in a topic with a single page
 			if ( empty( $to_num ) ) {
-				$retstr = sprintf( _n( 'Viewing %1$s post', 'Viewing %1$s posts', $total_int, 'bbpress' ), $total );
+				$retstr = sprintf( _n( '%1$s টি জবার', '%1$s টি জবার', $total_int, 'bbpress' ), $total );
 
 			// Several posts in a topic with several pages
 			} else {
-				$retstr = sprintf( _n( 'Viewing %2$s post (of %4$s total)', 'Viewing %1$s posts - %2$s through %3$s (of %4$s total)', $bbp->reply_query->post_count, 'bbpress' ), $bbp->reply_query->post_count, $from_num, $to_num, $total );
+				$retstr = sprintf( _n( '%2$s টি জবাব (মোট %4$s এর মধ্যে)', 'মোট %4$s এর মধ্যে %1$s টা জবাব (%2$s থেকে %3$s)', $bbp->reply_query->post_count, 'bbpress' ), $bbp->reply_query->post_count, $from_num, $to_num, $total );
 			}
 		}
 

@@ -1000,3 +1000,14 @@ include 'inc/lecture-custom-post.php';
 /* Question - Custom post type */
 
 include 'inc/question-custom-post.php';
+
+
+//Replace the default WordPress jQuery script with Google Libraries jQuery script
+function modify_jquery() {
+    if (!is_admin()) {
+        wp_deregister_script('jquery');
+        wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2');
+        wp_enqueue_script('jquery');
+    }
+}
+add_action('init', 'modify_jquery');
