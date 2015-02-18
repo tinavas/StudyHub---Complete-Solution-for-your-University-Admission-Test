@@ -81,7 +81,7 @@ body.reply-edit .reply {
 #bbpress-forums ul.bbp-forums,
 #bbpress-forums ul.bbp-replies,
 #bbpress-forums ul.bbp-search-results {
-	font-size: 12px;
+	font-size: 15px;
 	overflow: hidden;
 	border: 1px solid #eee;
 	margin-bottom: 20px;
@@ -120,6 +120,43 @@ body.reply-edit .reply {
 #bbpress-forums .bbp-forums-list li {
 	display: inline;
 	font-size: 11px;
+}
+
+li.bbp-body .bbp-forum-info a{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+li.bbp-body .bbp-forum-info .bbp-forum-content{
+	font-size: 14px !important;
+}
+
+.bbp-topic-freshness, .bbp-topic-voice-count, .bbp-topic-reply-count{
+	font-size: 12px;
+}
+
+.bbp-forums, .bbp-topics, .bbp-replies{
+	border: 1px solid #2ECC71 !important;
+}
+
+.bbp-forums .bbp-header, .bbp-replies .bbp-header{
+	border-bottom: 1px solid #2ECC71 !important;
+	background-color: #EADEC7 !important;
+}
+
+.bbp-topics .bbp-header{
+	background-color: #EADEC7 !important;
+	padding: 15px 10px !important;
+	border-bottom: 1px solid #2ECC71 !important;
+}
+
+.bbp-forums a, .bbp-topics a, .bbp-replies a{
+	color:#000;
+	text-decoration: none !important;
+}
+
+.bbp-reply-post-date{
+	font-size: 12px !important;
 }
 
 #bbpress-forums li.bbp-footer p {
@@ -610,18 +647,21 @@ td.bbp-topic-counts {
 }
 
 #bbpress-forums fieldset.bbp-form {
-	border: 1px solid #eee;
+	border: 1px solid #2ECC71;
 	padding: 10px 20px;
 	margin-bottom: 10px;
 }
 
 #bbpress-forums fieldset.bbp-form legend {
 	padding: 5px;
+	font-size: 14px !important;
+	font-weight: bold;
 }
 
 #bbpress-forums fieldset.bbp-form label {
 	margin: 0;
 	display: inline-block;
+	font-size: 14px !important;
 }
 
 #bbp-edit-topic-tag.bbp-form fieldset.bbp-form label,
@@ -638,11 +678,16 @@ td.bbp-topic-counts {
 	margin: 0 0 8px;
 }
 
+#bbpress-forums fieldset.bbp-form input#bbp_topic_title{
+	width:400px;
+}
+
 textarea#bbp_reply_content,
 textarea#bbp_topic_content,
 textarea#bbp_forum_content {
 	width: 97%;
 	box-sizing: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.1)
 }
 
 textarea#bbp_forum_content {
@@ -849,15 +894,16 @@ p.form-allowed-tags {
 
 div.bbp-template-notice,
 div.indicator-hint {
-	border-width: 1px;
-	border-style: solid;
-	padding: 0 0.6em;
+	padding: 10px 0.6em;
 	margin: 5px 0 15px;
 	border-radius: 3px;
-	background-color: #ffffe0;
-	border-color: #e6db55;
+	background-color: #FFCCCB;
 	color: #000;
 	clear: both;
+}
+
+div.bbp-template-notice p{
+	font-size: 15px !important;
 }
 div.bbp-template-notice a {
 	color: #555;

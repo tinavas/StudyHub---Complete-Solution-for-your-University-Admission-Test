@@ -2,7 +2,7 @@
 
 @section('title-meta')
 
-	<title>Model Test-AdmissionTestHub-A complete solution for your admission preparation</title>
+	<title>Botany-AdmissionTestHub-A complete solution for your admission preparation</title>
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 
@@ -11,66 +11,50 @@
 
 @section('content')
 
-	<!-- page-banner-section
-				================================================== -->
-			<div class="section-content page-banner-section2">
+
+<div class="section-content page-banner-section2">
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
-							<h1>MODEL TESTS</h1>
+							<h1>মোডেল টেস্ট</h1>
 						</div>
 					</div>
 				</div>
 			</div>
-			<section class="section white-section section-padding-top-bottom">
-		
-			<div class="container">
-				<div class="sixteen columns">
-					<div class="accordion">
-					
-						<div class="accordion_in">
-							<div class="acc_head grey-section">FULLY CUSTOMIZABLE</div>
-							<div class="acc_content grey-section">
-							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
 
-						<div class="accordion_in">
-							<div class="acc_head grey-section">UNLIMITED OPTIONS</div>
-							<div class="acc_content grey-section">
-							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-					
-						<div class="accordion_in">
-							<div class="acc_head grey-section">RETINA READY</div>
-							<div class="acc_content grey-section">
-							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
+	
+<div class="row">
+	<div class="col-md-3">
+		<div id='cssmenu'>
+			<ul>
+			   <li>সূচিপত্র</li>
+			   <li class='last'><a class='ajax' href='মোডেল-টেস্ট/মোডেল-টেস্ট-১'><span>মোডেল টেস্ট ১</span></a></li>
+			   <li class='last'><a class='ajax' href='মোডেল-টেস্ট/মোডেল-টেস্ট-২'><span>মোডেল টেস্ট ২</span></a></li>
+			   <li class='last'><a class='ajax' href='মোডেল-টেস্ট/মোডেল-টেস্ট-৩'><span>মোডেল টেস্ট ৩</span></a></li>
+			   <li class='last'><a class='ajax' href='মোডেল-টেস্ট/মোডেল-টেস্ট-৪'><span>মোডেল টেস্ট ৪</span></a></li>
+			   <li class='last'><a class='ajax' href='মোডেল-টেস্ট/মোডেল-টেস্ট-৫'><span>মোডেল টেস্ট ৫</span></a></li>
+			</ul>
+		</div>
+	</div>
 
-						<div class="accordion_in">
-							<div class="acc_head grey-section">100% RESPONSIVE</div>
-							<div class="acc_content grey-section">
-							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+	<div class="col-md-9">
+
+		<div id="display-window">
+			
+			<div class="content-window">
+
 			</div>
-				
-		</section>
 
-			<div class="section-content banner-text1-section">
-				<div class="container">
-					<div class="section-link">
-						<h1>
-							<a href="#">Register for Model Tests</a>
-							<a href="{{ url('/model-tests/your-tests') }}">Aready Registered ?? Start Now !!</a>
-						</h1>
-					</div>					
-				</div>
+			<div class="loader">
+
+				<img src="{{ url('/theme/images/ajax-loader.gif') }}" />
+
 			</div>
+
+		</div>
+	</div>
+
+</div>
+
 
 @stop

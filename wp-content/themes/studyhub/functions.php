@@ -1001,6 +1001,10 @@ include 'inc/lecture-custom-post.php';
 
 include 'inc/question-custom-post.php';
 
+/* Model Test - Custom post type */
+
+include 'inc/model-test-custom-post.php';
+
 
 //Replace the default WordPress jQuery script with Google Libraries jQuery script
 function modify_jquery() {

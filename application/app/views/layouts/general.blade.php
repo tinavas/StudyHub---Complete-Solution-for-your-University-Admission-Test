@@ -263,6 +263,7 @@
 
 				var post_data = data.split("/");
 
+
 				$('#display-window .content-window').html('');
 
 				$('#display-window .loader').css({'visibility':'visible'});
@@ -336,9 +337,9 @@
 							// get result on timeout
 							function get_result() {
 
-								var button_click = $('#skill-test').data('clicked');
+								var skill_button_click = $('#skill-test').data('clicked');
 
-								if(typeof button_click === 'undefined'){
+								if(typeof skill_button_click === 'undefined'){
 									alert('তোমার নির্ধারিত সময় শেষ। ফলাফল জানতে "OK" চাপো।');
 	        						var count = $('#count').val();
 							        var subject = $('#subject').val();
@@ -497,6 +498,178 @@
 								'chapter' : chapter,
 								'topic' : topic,
 								'category' : 'question',
+								'count' : count,
+								'answer_paper' : answer_paper
+							},
+							cache: false,
+							success: function(data){
+								$('#display-window .content-window').css({'opacity':'0'});
+								$('#display-window .loader').css({'visibility':'hidden'});
+								$('#display-window .content-window').html(data).animate({opacity: 1}, 300);
+							},
+							 error: function() {
+							 	$('#display-window .loader').css({'visibility':'hidden'});
+								$('#display-window .content-window').html('<h5>An error has occurred.</h5>');
+								}
+				});
+
+
+		    });
+		});
+
+
+		/*Ajax Request for loading model test questions */
+
+		$(document).ready(function(e) {
+
+			$('body').on('click', '#load-model-test', function(e){
+				e.preventDefault();
+				var data = $(this).attr('href');
+				var post_data = data.split("/");
+
+				//getting total allowed time
+				var time = Number($('span.time').text());
+				var hours = Math.floor( time / 60);
+				var minutes = time % 60;
+
+				$('#display-window .content-window').html('');
+
+				$('#display-window .loader').css({'visibility':'visible'});
+				$.ajax({
+					type: "POST",
+					url: "{{ url('/app/ajax.php') }}",
+					data: {
+						'subject' : post_data[0],
+						'chapter' : post_data[1],
+						'topic' : post_data[2],
+					},
+					cache: false,
+					success: function(data){
+						$('#display-window .loader').css({'visibility':'hidden'});
+						$('#display-window .content-window').css({'opacity':'0'}).html(data).animate({opacity: 1}, 300);
+
+						// counter for time required
+						$(function(){
+							$("#hms_timer").countdowntimer({
+						                hours : hours,
+										minutes : minutes,
+						                seconds : 0,
+						                size : "lg",
+						                timeUp : get_result
+							});
+
+							// get result on timeout
+							function get_result() {
+
+								var model_button_click = $('#model-test').data('clicked');
+
+								if(typeof model_button_click === 'undefined'){
+									alert('তোমার নির্ধারিত সময় শেষ। ফলাফল জানতে "OK" চাপো।');
+	        						var count = $('#count').val();
+							        var subject = $('#subject').val();
+							        var chapter = $('#chapter').val();
+
+
+							        var answer_paper = [];
+							        for (i = 1; i <= count; i++) {
+										    var id = $('input[name='+i+']').attr('id');
+							        		var question_id = id.substring(1);
+							        		var answer = $('input[name='+i+']:checked').val();
+
+							        		if(answer === undefined){
+							        			answer_paper[question_id] = 'unanswered';
+							        		}else{
+							        			answer_paper[question_id] = answer;
+							        		}
+											
+										}
+
+							        $('#display-window .loader').css({'visibility':'visible'});
+							        //$('#display-window .content-window').animate({opacity: 0}, 500);
+							        //alert(answer_paper[54]);
+							        //throw new Error();
+
+							        $.ajax({
+												type: "POST",
+												url: "{{ url('/app/ajax.php') }}",
+												data: {
+													'subject' : subject,
+													'chapter' : chapter,
+													'count' : count,
+													'answer_paper' : answer_paper
+												},
+												cache: false,
+												success: function(data){
+													$('#display-window .content-window').css({'opacity':'0'});
+													$('#display-window .loader').css({'visibility':'hidden'});
+													$('#display-window .content-window').html(data).animate({opacity: 1}, 300);
+												},
+												 error: function() {
+												 	$('#display-window .loader').css({'visibility':'hidden'});
+													$('#display-window .content-window').html('<h5>An error has occurred.</h5>');
+													}
+									});
+
+						    }
+
+        					}
+						});
+					 
+
+					},
+					 error: function() {
+					 	$('#display-window .loader').css({'visibility':'hidden'});
+						$('#display-window .content-window').html('<h5>An error has occurred</h5>');
+						}
+				});
+
+			});
+
+
+		});
+
+		
+		/* getting model test result */
+		jQuery(function($) {
+
+			//get result on click
+		    $('body').on('click', '#model-test', function(e){
+
+			    $(this).data('clicked', true);
+
+			    //alert($('#skill-test').data('clicked'));
+
+		        e.preventDefault();
+		        var count = $('#count').val();
+		        var subject = $('#subject').val();
+		        var chapter = $('#chapter').val();
+
+
+		        var answer_paper = [];
+		        for (i = 1; i <= count; i++) {
+					    var id = $('input[name='+i+']').attr('id');
+		        		var question_id = id.substring(1);
+		        		var answer = $('input[name='+i+']:checked').val();
+
+		        		if(answer === undefined){
+		        			answer_paper[question_id] = 'unanswered';
+		        		}else{
+		        			answer_paper[question_id] = answer;
+		        		}
+						
+					}
+
+		        $('#display-window .loader').css({'visibility':'visible'});
+		        //$('#display-window .content-window').animate({opacity: 0}, 500);
+		        //alert(answer_paper[54]);
+		        //throw new Error();
+
+		        $.ajax({
+							type: "POST",
+							url: "{{ url('/app/ajax.php') }}",
+							data: {
+								'subject' : subject,
+								'chapter' : chapter,
 								'count' : count,
 								'answer_paper' : answer_paper
 							},

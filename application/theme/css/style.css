@@ -7103,18 +7103,18 @@ input[type="radio"]:checked + label span {
   transition:background-color 0.4s linear;
 }
 
-#skill-test, #load-test{
+#skill-test, #load-test, #model-test, #load-model-test{
     font-size: 16px;
     margin-top: 15px;
     margin-left: 34%;
 }
 }
 
-#skill-test span{
+#skill-test span, #model-test span{
   color:#2ECC71;
 }
 
-#skill-test:hover, #load-test:hover{
+#skill-test:hover, #load-test:hover, #model-test:hover, #load-model-test:hover{
   background-color: #E6E6E6;
   color:#2ECC71;
   border: 1px solid #212121;
